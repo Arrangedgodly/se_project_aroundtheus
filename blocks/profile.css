@@ -1,0 +1,24 @@
+.profile {
+  color: #fff;
+  display: flex;
+  margin: auto;
+}
+
+.profile__image {
+
+}
+
+.profile__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__name {
+
+}
+
+@media screen and (max-width: 1280px) {
+  .profile {
+    width: 68.75%;
+  }
+}

@@ -1,0 +1,12 @@
+.icons__edit,
+.icons__add,
+.icons__heart {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.icons__edit:hover,
+.icons__add:hover,
+.icons__heart:hover {
+  opacity: 0.6;
+}

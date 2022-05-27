@@ -1,0 +1,9 @@
+@media screen and (max-width: 1280px) {
+  .footer {
+    
+  }
+
+  .footer__copyright {
+    color: #fff;
+  }
+}
