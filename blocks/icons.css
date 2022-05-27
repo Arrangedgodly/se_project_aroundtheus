@@ -10,3 +10,15 @@
 .icons__heart:hover {
   opacity: 0.6;
 }
+
+.icons__edit {
+  width: 24px;
+  height: 24px;
+}
+
+.icons__add {
+  width: 150px;
+  height: 50px;
+  display: flex;
+  align-self: center;
+}
