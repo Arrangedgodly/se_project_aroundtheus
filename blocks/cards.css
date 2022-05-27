@@ -1,4 +1,5 @@
 .cards {
+  margin: auto;
   height: 61%;
   width: 68.75%;
   display: flex;
