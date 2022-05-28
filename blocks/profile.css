@@ -12,7 +12,7 @@
   flex-direction: column;
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1280px) {
 .profile {
   margin: 0 auto 4.77% auto;
   width: 68.75%;
@@ -42,6 +42,25 @@
 }
 }
 
-@media (max-width: 425px) {
-  
+@media (max-width: 1279px) {
+  .profile {
+    flex-direction: column;
+  }
+
+  .profile__image {
+    width: 37.5%;
+    height: 37.5%;
+    margin: auto;
+  }
+
+  .profile__name {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 27px;
+    text-align: center;
+  }
+
+  .profile__desc {
+    margin: 14px auto 36px auto;
+  }
 }
