@@ -60,15 +60,14 @@
   }
 
   .card {
-    width: 282px;
+    width: 88.125%;
     border-radius: 10px;
     object-fit: contain;
-    margin-bottom: 20px;
+    margin: 0 auto 20px auto;
   }
 
   .card__image {
-    width: 282px;
-    height: 282px;
+    width: 100%;
   }
 
   .card__footer {

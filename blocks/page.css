@@ -11,3 +11,9 @@
   font-family: 'Inter', sans-serif;
   font-style: normal;
 }
+
+.page__content {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
