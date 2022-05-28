@@ -1,4 +1,4 @@
-@media (min-width: 1280px) {
+@media (min-width: 720px) {
 .footer {
     width: 68.75%;
     margin-bottom: 4.93%;
@@ -9,6 +9,6 @@
 }
 }
 
-@media (max-width: 1279px) {
+@media (max-width: 720px) {
   
 }

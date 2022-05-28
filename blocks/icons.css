@@ -11,23 +11,23 @@
   opacity: 0.6;
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 720px) {
   .icons__edit {
-    width: 24px;
-    height: 24px;
+    width: 1.875vw;
+    height: 1.875vw;
   }
 
   .icons__add {
-    width: 17%;
-    height: 5.68%;
-    margin: 0 0 0 auto;
+    width: 17.045%;
+    height: 3.901vw;
+    margin: auto 0 auto auto;
     background-image: url("../images/add-button.svg");
     background-size: cover;
     background-repeat: no-repeat;
   }
 }
 
-@media (max-width: 1279px) {
+@media (max-width: 720px) {
   .icons__edit {
     width: 18px;
     height: 18px;
