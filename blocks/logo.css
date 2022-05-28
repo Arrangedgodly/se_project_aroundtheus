@@ -1,3 +1,11 @@
+@media (min-width: 1440px) {
 .logo {
   width: 19.65%;
+}
+}
+
+@media (max-width: 425px) {
+  .logo{
+    width: 39.37%;
+  }
 }
