@@ -15,6 +15,7 @@
   .icons__edit {
     width: 1.875vw;
     height: 1.875vw;
+    margin-left: 18px;
   }
 
   .icons__add {
@@ -22,7 +23,7 @@
     height: 3.901vw;
     margin: auto 0 auto auto;
     background-image: url("../images/add-button.svg");
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
   }
 }
@@ -39,6 +40,6 @@
     margin: auto;
     background-image: url("../images/add-button-mobile.svg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
   }
 }

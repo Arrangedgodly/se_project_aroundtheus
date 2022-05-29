@@ -10,7 +10,7 @@
   background-color: #545454;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1280px) {
 .header {
   width: 68.75%;
   height: 10%;
@@ -31,5 +31,17 @@
 
   .header__divider {
     margin-top: 30px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1279px) {
+  .header {
+    width: 95%;
+    height: 10%;
+    margin: 3.5% auto 3% auto;
+  }
+
+  .header__divider {
+    margin-top: 20px;
   }
 }

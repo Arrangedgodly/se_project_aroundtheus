@@ -19,8 +19,8 @@
   }
 
   .profile__image {
-    width: 13.64%;
-    height: 13.64%;
+    width: 9.375vw;
+    height: 9.375vw;
   }
 
   .profile__info {
@@ -28,10 +28,13 @@
   }
 
   .profile__name {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
     font-weight: 500;
     font-size: 3.28vw;
     line-height: 114%;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
 
   .profile__desc {
@@ -52,6 +55,10 @@
     width: 37.5%;
     height: 37.5%;
     margin: auto;
+  }
+
+  .profile__info {
+    margin-top: 30px;
   }
 
   .profile__name {
