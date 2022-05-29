@@ -12,7 +12,7 @@
   flex-direction: column;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 768px) {
   .profile {
     margin: 0 auto 4.77% auto;
     width: 68.75%;
@@ -25,7 +25,6 @@
 
   .profile__info {
     margin-left: 3.4%;
-    width: 47.16%;
   }
 
   .profile__name {
@@ -43,7 +42,7 @@
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .profile {
     flex-direction: column;
     width: 100%;
