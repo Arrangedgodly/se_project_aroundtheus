@@ -1,137 +1,141 @@
 <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <title>Around the US</title>
-      <meta charset="utf-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <meta name="description" content="The third sprint project as part of the Practicum Full Stack Software Engineering course.
-      A page dedicated to learning responsive web design, and portraying perfection across multiple viewing devices" 
-      />
-      <meta name="author" content="Grady Wasil" />
-      <meta name="keywords"
-            content="Practicum, Yandex, HTML, CSS, Figma, Responsive Design"
-      />
-      <link rel="stylesheet" href="./pages/index.css" />
-    </head>
-    <body>
-      <div class="page">
-        <header class="header">
-          <img class="logo" src="./images/logo.svg">
-          <span class="header__divider"></span>
-        </header>
-        <main class="page__main">
-          <section class="profile">
-            <img class="profile__image" src="./images/person.jpg">
-            <div class="profile__info">
-              <h1 class="profile__name">Jacques Cousteau
+<html lang="en">
+  <head>
+    <title>Around the US</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="The third sprint project as part of the Practicum Full Stack Software Engineering course.
+      A page dedicated to learning responsive web design, and portraying perfection across multiple viewing devices"
+    />
+    <meta name="author" content="Grady Wasil" />
+    <meta
+      name="keywords"
+      content="Practicum, Yandex, HTML, CSS, Figma, Responsive Design"
+    />
+    <link rel="stylesheet" href="./pages/index.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <img class="logo" src="./images/logo.svg" alt="around the us logo" />
+        <span class="header__divider"></span>
+      </header>
+      <main class="page__main">
+        <section class="profile">
+          <img
+            class="profile__image"
+            src="./images/person.jpg"
+            alt="profile image"
+          />
+          <div class="profile__info">
+            <h1 class="profile__name">
+              Jacques Cousteau
+              <img
+                src="./images/edit.svg"
+                class="icons__edit"
+                alt="edit icon"
+              />
+            </h1>
+            <p class="profile__desc">Explorer</p>
+          </div>
+          <div class="icons__add"></div>
+        </section>
+        <section>
+          <ul class="cards">
+            <li class="card">
+              <img
+                src="./images/card1.jpg"
+                alt="Yosemite Valley"
+                class="card__image"
+              />
+              <div class="card__footer">
+                <h2 class="card__footer-title">Yosemite Valley</h2>
                 <img
-                  src="./images/edit.svg"
-                  class="icons__edit"
-                  alt="edit icon"
-                >
-              </h1>
-              <p class="profile__desc">Explorer</p>
-            </div>
-            <div class="icons__add">
-          </section>
-          <section>
-            <ul class="cards">
-              <li class="card">
+                  src="./images/heart-icon.svg"
+                  alt="heart icon"
+                  class="icons__heart card__footer-icon"
+                />
+              </div>
+            </li>
+            <li class="card">
+              <img
+                src="./images/card2.png"
+                alt="Lake Louise"
+                class="card__image"
+              />
+              <div class="card__footer">
+                <h2 class="card__footer-title">Lake Louise</h2>
                 <img
-                  src="./images/card1.jpg"
-                  alt="Yosemite Valley"
-                  class="card__image"
-                >
-                <div class="card__footer">
-                  <h2 class="card__footer-title">Yosemite Valley</h2>
-                  <img
-                    src="./images/heart-icon.svg"
-                    alt="heart icon"
-                    class="icons__heart card__footer-icon"
-                  >
-                </div>
-              </li>
-              <li class="card">
+                  src="./images/heart-icon.svg"
+                  alt="heart icon"
+                  class="icons__heart card__footer-icon"
+                />
+              </div>
+            </li>
+            <li class="card">
+              <img
+                src="./images/card3.png"
+                alt="Bald Mountains"
+                class="card__image"
+              />
+              <div class="card__footer">
+                <h2 class="card__footer-title">Bald Mountains</h2>
                 <img
-                  src="./images/card2.png"
-                  alt="Lake Louise"
-                  class="card__image"
-                >
-                <div class="card__footer">
-                  <h2 class="card__footer-title">Lake Louise</h2>
-                  <img
-                    src="./images/heart-icon.svg"
-                    alt="heart icon"
-                    class="icons__heart card__footer-icon"
-                  >
-                </div>
-              </li>
-              <li class="card">
+                  src="./images/heart-icon.svg"
+                  alt="heart icon"
+                  class="icons__heart card__footer-icon"
+                />
+              </div>
+            </li>
+            <li class="card">
+              <img src="./images/card4.png" alt="Latemar" class="card__image" />
+              <div class="card__footer">
+                <h2 class="card__footer-title">Latemar</h2>
                 <img
-                  src="./images/card3.png"
-                  alt="Bald Mountains"
-                  class="card__image"
-                >
-                <div class="card__footer">
-                  <h2 class="card__footer-title">Bald Mountains</h2>
-                  <img
-                    src="./images/heart-icon.svg"
-                    alt="heart icon"
-                    class="icons__heart card__footer-icon"
-                  >
-                </div>
-              </li>
-              <li class="card">
+                  src="./images/heart-icon.svg"
+                  alt="heart icon"
+                  class="icons__heart card__footer-icon"
+                />
+              </div>
+            </li>
+            <li class="card">
+              <img
+                src="./images/card5.png"
+                alt="Vanoise National Park"
+                class="card__image"
+              />
+              <div class="card__footer">
+                <h2 class="card__footer-title">Vanoise National Park</h2>
                 <img
-                  src="./images/card4.png"
-                  alt="Latemar"
-                  class="card__image"
-                >
-                <div class="card__footer">
-                  <h2 class="card__footer-title">Latemar</h2>
-                  <img
-                    src="./images/heart-icon.svg"
-                    alt="heart icon"
-                    class="icons__heart card__footer-icon"
-                  >
-                </div>
-              </li>
-              <li class="card">
+                  src="./images/heart-icon.svg"
+                  alt="heart icon"
+                  class="icons__heart card__footer-icon"
+                />
+              </div>
+            </li>
+            <li class="card">
+              <img
+                src="./images/card6.png"
+                alt="Lago di Braies"
+                class="card__image"
+              />
+              <div class="card__footer">
+                <h2 class="card__footer-title">Lago di Braies</h2>
                 <img
-                  src="./images/card5.png"
-                  alt="Vanoise National Park"
-                  class="card__image"
-                >
-                <div class="card__footer">
-                  <h2 class="card__footer-title">Vanoise National Park</h2>
-                  <img
-                    src="./images/heart-icon.svg"
-                    alt="heart icon"
-                    class="icons__heart card__footer-icon"
-                  >
-                </div>
-              </li>
-              <li class="card">
-                <img
-                  src="./images/card6.png"
-                  alt="Lago di Braies"
-                  class="card__image"
-                >
-                <div class="card__footer">
-                  <h2 class="card__footer-title">Lago di Braies</h2>
-                  <img
-                    src="./images/heart-icon.svg"
-                    alt="heart icon"
-                    class="icons__heart card__footer-icon"
-                  >
-                </div>
-              </li>
-            </ul>
-          </section>
-        </main>
-        <footer class="footer">
-          <p class="footer__copyright">© 2022 Around the US</p>
-        </footer>
-      </div>
-    </body>
-  </html>
+                  src="./images/heart-icon.svg"
+                  alt="heart icon"
+                  class="icons__heart card__footer-icon"
+                />
+              </div>
+            </li>
+          </ul>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">© 2022 Around the US</p>
+      </footer>
+    </div>
+  </body>
+</html>
