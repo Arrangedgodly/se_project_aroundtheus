@@ -1,24 +1,24 @@
-.icons__edit,
-.icons__add,
-.icons__heart {
+.icons-edit,
+.icons-add,
+.icons-heart {
   opacity: 1;
   transition: opacity 0.4s ease-in-out;
 }
 
-.icons__edit:hover,
-.icons__add:hover,
-.icons__heart:hover {
+.icons-edit:hover,
+.icons-add:hover,
+.icons-heart:hover {
   opacity: 0.6;
 }
 
 @media (min-width: 768px) {
-  .icons__edit {
+  .icons-edit {
     width: 1.875vw;
     height: 1.875vw;
     margin-left: 18px;
   }
 
-  .icons__add {
+  .icons-add {
     width: 100%;
     height: 3.901vw;
     margin: auto 0 auto auto;
@@ -31,12 +31,12 @@
 }
 
 @media (max-width: 768px) {
-  .icons__edit {
+  .icons-edit {
     width: 18px;
     height: 18px;
   }
 
-  .icons__add {
+  .icons-add {
     width: 88.125%;
     height: 15.625vw;
     margin: 0 auto 0 auto;
