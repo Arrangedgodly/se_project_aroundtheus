@@ -23,6 +23,7 @@
   overflow: hidden;
   margin-right: auto;
   margin-left: 0;
+  max-width: 220px;
 }
 
 .card__footer-icon {
