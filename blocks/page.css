@@ -4,14 +4,14 @@
   margin: auto;
   flex-direction: column;
   align-items: center;
-  min-width: 320px;
-  max-width: 1280px;
   font-family: 'Inter', sans-serif;
   font-style: normal;
 }
 
 .page__main {
   width: 100%;
+  min-width: 320px;
+  max-width: 1280px;
   margin: 0;
   padding: 0;
 }

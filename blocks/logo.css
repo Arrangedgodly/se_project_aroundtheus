@@ -1,6 +1,7 @@
 @media (min-width: 768px) {
 .logo {
   width: 19.66%;
+  margin-bottom: 41px;
 }
 }
 
@@ -8,5 +9,6 @@
   .logo{
     width: 39.37%;
     margin-left: 27px;
+    margin-bottom: 32px;
   }
 }
