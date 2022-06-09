@@ -1,11 +1,15 @@
 # Project 3: Around The U.S.
 
+---
+
 ## Overview  
 
 * Intro
 * Description
 * Link
-  
+
+---
+
 ### **Intro**
   
 This project was designed to be a grand step in learning true responsive web design; swapping layouts between desktop, tablet, and mobile seemlessly.
