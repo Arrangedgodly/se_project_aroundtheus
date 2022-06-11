@@ -2,14 +2,14 @@
   color: #545454;
 }
 
-@media (min-width: 769px) {
+@media screen and (max-width: 1024px) {
 .footer {
     width: 68.75%;
     margin-bottom: 4.93%;
   }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 580px) {
   .footer {
     width: 88.125%;
     margin: 31px auto 36px auto;

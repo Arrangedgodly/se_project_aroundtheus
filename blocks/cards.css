@@ -8,16 +8,16 @@
   column-gap: 17px;
 }
 
-
-@media (max-width: 768px) {
-  .cards {
-    width: 100%;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1279px) {
+@media screen and (max-width: 1024px) {
   .cards {
     width: 85%;
     margin: 0 auto 0 auto;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .cards {
+    width: 100%;
+    column-gap: 0;
   }
 }

@@ -1,11 +1,10 @@
-@media (min-width: 768px) {
 .logo {
   width: 19.66%;
   margin-bottom: 41px;
 }
-}
 
-@media (max-width: 768px) {
+
+@media screen and (max-width: 580px) {
   .logo{
     width: 39.37%;
     margin-left: 27px;
