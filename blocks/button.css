@@ -11,6 +11,7 @@
 .button_type_add {
   background-image: url("../images/add-button.svg");
   background-repeat: no-repeat;
+  background-size: cover;
   background-position: 50% 50%;
   margin: 0 0 0 auto;
   padding: 0;
@@ -24,7 +25,9 @@
   background-image: url("../images/edit.svg");
   background-repeat: no-repeat;
   background-position: 50% 50%;
+  background-size: cover;
   margin: 0;
+  margin-left: 18px;
   padding: 0;
   width: 24px;
   height: 24px;
@@ -36,6 +39,7 @@
   background-image: url("../images/heart-icon.svg");
   background-repeat: no-repeat;
   background-position: 50% 50%;
+  background-size: cover;
   width: 21px;
   height: 18px;
   margin: auto 0 auto auto;
@@ -55,11 +59,9 @@
   }
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 683px) {
   .button_type_edit {
-    width: 1.875vw;
-    height: 1.875vw;
-    margin-left: 18px;
+    margin-left: 10px;
   }
 
   .button_type_add {

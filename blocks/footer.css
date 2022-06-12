@@ -1,15 +1,19 @@
-.footer__copyright {
-  color: #545454;
-}
-
-@media screen and (max-width: 1024px) {
 .footer {
     width: 68.75%;
-    margin-bottom: 4.93%;
+    margin: 67px 0 4.93%;
+  }
+
+  .footer__copyright {
+    color: #545454;
+  }
+
+@media screen and (max-width: 1024px) {
+  .footer {
+    width: 85%;
   }
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 683px) {
   .footer {
     width: 88.125%;
     margin: 31px auto 36px auto;

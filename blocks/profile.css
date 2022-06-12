@@ -35,52 +35,32 @@
 
 .profile__desc {
   font-weight: 400;
-  font-size: 1.406vw;
+  font-size: 18px;
   line-height: 22px;
   margin: 0;
 }
 
 @media screen and (max-width: 1024px) {
   .profile {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    align-items: center;
     margin: 0 auto 5% auto;
-    width: 95%;
+    width: 85%;
     }
     
     .profile__image {
       width: 13.63vw;
       height: 13.63vw;
-      grid-column-start: 1;
-      grid-column-end: 2;
-    }
-  
-    .profile__info {
-      margin-left: 3.4%;
-      grid-column-start: 2;
-      grid-column-end: 3;
     }
   
     .profile__name {
-      display: flex;
-      flex-wrap: nowrap;
-      align-items: center;
-      font-weight: 500;
-      font-size: 42px;
-      line-height: 114%;
-      margin-bottom: 14px;
+      font-size: 32px;
     }
   
     .profile__desc {
-      font-weight: 400;
-      font-size: 1.406vw;
-      line-height: 22px;
-      margin: 0;
+      font-size: 16px;
     }
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 683px) {
   .profile {
     display: flex;
     flex-direction: column;
@@ -94,19 +74,21 @@
   }
 
   .profile__info {
+    width: 282px;
     margin-top: 30px;
   }
 
   .profile__name {
     font-weight: 500;
-    font-size: 6.875vw;
+    font-size: 22px;
     line-height: 27px;
     text-align: center;
-    margin: 0 2.045% 0 3.41%;
+    margin: 0 auto 0 auto;
   }
 
   .profile__desc {
     margin: 14px auto 36px auto;
-    font-size: 4.375vw;
+    font-size: 14px;
+    line-height: 17px;
   }
 }
