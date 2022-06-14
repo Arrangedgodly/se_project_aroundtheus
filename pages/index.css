@@ -1,4 +1,5 @@
 @import url("../vendor/normalize.css");
+@import url('../vendor/_fonts/Inter\ Web/inter.css');
 @import url("../blocks/header.css");
 @import url("../blocks/page.css");
 @import url("../blocks/logo.css");
@@ -8,4 +9,3 @@
 @import url("../blocks/cards.css");
 @import url("../blocks/card.css");
 @import url("../blocks/footer.css");
-@import url('../vendor/_fonts/Inter\ Web/inter.css');

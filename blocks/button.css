@@ -2,6 +2,12 @@
   opacity: 1;
   transition: opacity 0.4s ease-in-out;
   cursor: pointer;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  padding: 0;
+  background-color: rgba(0,0,0,0);
+  border-style: none;
 }
 
 .button:hover {
@@ -10,44 +16,26 @@
 
 .button_type_add {
   background-image: url("../images/add-button.svg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 50%;
   margin: 0 0 0 auto;
-  padding: 0;
   width: 150px;
   height: 50px;
   grid-column-start: 3;
   grid-column-end: 4;
-  border-style: none;
-  background-color: #000;
 }
 
 .button_type_edit {
   background-image: url("../images/edit.svg");
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: cover;
   margin: 0;
   margin-left: 18px;
-  padding: 0;
   width: 24px;
   height: 24px;
-  border-style: none;
-  background-color: #000;
 }
 
 .button_type_like {
   background-image: url("../images/heart-icon.svg");
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: cover;
   width: 21px;
   height: 18px;
-  margin: auto 0 auto auto;
-  padding: 0;
-  border-style: none;
-  background-color: #fff;
+  margin: auto 30px auto 28px;
 }
 
 .button_type_like:hover {
@@ -70,7 +58,5 @@
     width: 282px;
     margin: 0 0 36px 0;
     background-image: url("../images/add-button-mobile.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
   }
 }
