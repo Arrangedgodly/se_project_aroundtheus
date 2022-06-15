@@ -28,7 +28,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  align-items: center;
+  align-items: baseline;
 }
 
 .profile__name {
@@ -55,7 +55,7 @@
     }
   
     .profile__name {
-      font-size: 32px;
+      font-size: 28px;
     }
   
     .profile__desc {
@@ -76,7 +76,7 @@
   }
 
   .profile__info {
-    width: 282px;
+    width: 100%;
     margin-top: 30px;
   }
 
@@ -85,7 +85,7 @@
     font-size: 22px;
     line-height: 27px;
     text-align: center;
-    margin: 0 auto 0 auto;
+    margin: 0 10px 0 62px;
   }
 
   .profile__desc {
