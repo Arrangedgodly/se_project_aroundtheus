@@ -39,6 +39,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  max-width: 373px;
 }
 
 .profile__desc {
@@ -46,6 +47,10 @@
   font-size: 18px;
   line-height: 22px;
   margin: 16px 0 0 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 415px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -56,10 +61,12 @@
   
     .profile__name {
       font-size: 28px;
+      max-width: 230px;
     }
   
     .profile__desc {
       font-size: 16px;
+      max-width: 270px;
     }
 }
 
@@ -90,11 +97,13 @@
     line-height: 27px;
     text-align: center;
     margin: 0 10px 0 62px;
+    max-width: 196px;
   }
 
   .profile__desc {
     margin: 14px auto 36px auto;
     font-size: 14px;
     line-height: 17px;
+    max-width: 282px;
   }
 }
