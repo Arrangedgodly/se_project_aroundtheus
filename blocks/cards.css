@@ -16,7 +16,7 @@
 
 @media screen and (max-width: 683px) {
   .cards {
-    width: 100%;
+    width: 282px;
     column-gap: 0;
   }
 }
