@@ -18,4 +18,4 @@ Around the US features a profile card at the top of the page, with a user image,
 
 ### **Link**
 
-You can find the live version of this web project [here](https://arrangedgodly.com/se_project_aroundtheus/).
+You can find the live version of this web project [here](https://arrangedgodly.github.io/se_project_aroundtheus).
