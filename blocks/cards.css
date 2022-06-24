@@ -11,13 +11,12 @@
 @media screen and (max-width: 1024px) {
   .cards {
     width: 85%;
-    margin: 0 auto 0 auto;
   }
 }
 
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 683px) {
   .cards {
-    width: 100%;
+    width: 282px;
     column-gap: 0;
   }
 }
