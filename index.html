@@ -23,6 +23,31 @@
         <img class="logo" src="./images/logo.svg" alt="around the us logo" />
       </header>
       <main class="page__main">
+        <div class="modal modal__opened">
+          <div class="modal__container">
+            <form class="form">
+              <h4 class="form__header">Edit profile</h4>
+              <label for="profileName" class="form__label">
+                <input
+                  class="form__input"
+                  type="text"
+                  name="profileName"
+                  placeholder="Jacques Cousteau"
+                />
+              </label>
+              <label for="profileDesc" class="form__label">
+                <input
+                  class="form__input"
+                  type="text"
+                  name="profileDesc"
+                  placeholder="Explorer"
+                />
+              </label>
+              <button type="submit" class="form__button">Save</button>
+            </form>
+            <button class="button button_type_close"></button>
+          </div>
+        </div>
         <section class="profile">
           <img
             class="profile__image"
@@ -31,13 +56,8 @@
           />
           <div class="profile__info">
             <div class="profile__name-wrapper">
-              <h1 class="profile__name">
-                Jacques Cousteau
-              </h1>
-              <button
-                type="button"
-                class="button button_type_edit"
-              ></button>
+              <h1 class="profile__name">Jacques Cousteau</h1>
+              <button type="button" class="button button_type_edit"></button>
             </div>
             <p class="profile__desc">Explorer</p>
           </div>
@@ -53,10 +73,7 @@
               />
               <div class="card__footer">
                 <h2 class="card__footer-title">Yosemite Valley</h2>
-                <button
-                  type="button"
-                  class="button button_type_like"
-                ></button>
+                <button type="button" class="button button_type_like"></button>
               </div>
             </li>
             <li class="card">
