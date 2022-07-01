@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="./pages/index.css" />
     <script src="./scripts/index.js" defer></script>
     <script src="./scripts/modal.js" defer></script>
+    <script src="./scripts/form.js" defer></script>
+    <script src="./scripts/card.js" defer></script>
   </head>
   <body>
     <div class="page">
@@ -30,7 +32,7 @@
               <h4 class="form__header">Edit profile</h4>
               <label for="profileName" class="form__label">
                 <input
-                  class="form__input"
+                  class="form__input form__input_type_name"
                   type="text"
                   name="profileName"
                   placeholder="Jacques Cousteau"
@@ -38,7 +40,7 @@
               </label>
               <label for="profileDesc" class="form__label">
                 <input
-                  class="form__input"
+                  class="form__input form__input_type_desc"
                   type="text"
                   name="profileDesc"
                   placeholder="Explorer"
@@ -66,83 +68,19 @@
         </section>
         <section>
           <ul class="cards">
-            <li class="card">
-              <img
-                src="./images/card1.jpg"
-                alt="Yosemite Valley"
-                class="card__image"
-              />
-              <div class="card__footer">
-                <h2 class="card__footer-title">Yosemite Valley</h2>
-                <button type="button" class="button button_type_like"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/card2.png"
-                alt="Lake Louise"
-                class="card__image"
-              />
-              <div class="card__footer">
-                <h2 class="card__footer-title">Lake Louise</h2>
-                <button
-                  type="button"
-                  class="button button_type_like card__footer-icon"
-                ></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/card3.png"
-                alt="Bald Mountains"
-                class="card__image"
-              />
-              <div class="card__footer">
-                <h2 class="card__footer-title">Bald Mountains</h2>
-                <button
-                  type="button"
-                  class="button button_type_like card__footer-icon"
-                ></button>
-              </div>
-            </li>
-            <li class="card">
-              <img src="./images/card4.png" alt="Latemar" class="card__image" />
-              <div class="card__footer">
-                <h2 class="card__footer-title">Latemar</h2>
-                <button
-                  type="button"
-                  class="button button_type_like card__footer-icon"
-                ></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/card5.png"
-                alt="Vanoise National Park"
-                class="card__image"
-              />
-              <div class="card__footer">
-                <h2 class="card__footer-title">Vanoise National Park</h2>
-                <button
-                  type="button"
-                  class="button button_type_like card__footer-icon"
-                ></button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/card6.png"
-                alt="Lago di Braies"
-                class="card__image"
-              />
-              <div class="card__footer">
-                <h2 class="card__footer-title">Lago di Braies</h2>
-                <button
-                  type="button"
-                  class="button button_type_like card__footer-icon"
-                ></button>
-              </div>
-            </li>
+            <template id="card">
+              <li class="card">
+                <img
+                  src=""
+                  alt=""
+                  class="card__image"
+                />
+                <div class="card__footer">
+                  <h2 class="card__footer-title"></h2>
+                  <button type="button" class="button button_type_like"></button>
+                </div>
+              </li>
+            </template>
           </ul>
         </section>
       </main>
