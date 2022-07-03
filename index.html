@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="./pages/index.css" />
     <script src="./scripts/index.js" defer></script>
     <script src="./scripts/modal.js" defer></script>
+    <script src="./scripts/profile-modal.js" defer></script>
     <script src="./scripts/form.js" defer></script>
     <script src="./scripts/card.js" defer></script>
   </head>
@@ -26,8 +27,8 @@
         <img class="logo" src="./images/logo.svg" alt="around the us logo" />
       </header>
       <main class="page__main">
-        <div class="modal">
-          <div class="modal__container">
+        <div class="profile-modal modal modal__opened">
+          <div class="profile-modal__container">
             <form class="form">
               <h4 class="form__header">Edit profile</h4>
               <label for="profileName" class="form__label">
@@ -36,6 +37,7 @@
                   type="text"
                   name="profileName"
                   placeholder="Jacques Cousteau"
+                  required
                 />
               </label>
               <label for="profileDesc" class="form__label">
@@ -44,6 +46,7 @@
                   type="text"
                   name="profileDesc"
                   placeholder="Explorer"
+                  required
                 />
               </label>
               <button type="submit" class="form__button">Save</button>

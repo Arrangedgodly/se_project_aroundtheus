@@ -1,11 +1,11 @@
-const editButton = document.querySelector(".button_type_edit");
-const closeButton = document.querySelector(".button_type_close");
-const modal = document.querySelector(".modal");
+function toggleModal(modal) {
+    modal.classList.toggle("modal__opened");
+  }
 
-function toggleModal() {
-  modal.classList.toggle("modal__opened");
+function openModal(modal) {
+    modal.classList.add("modal__opened");
 }
 
-editButton.addEventListener("click", toggleModal);
-closeButton.addEventListener("click", toggleModal);
-
+function closeModal(modal) {
+    modal.classList.remove("modal__opened");
+}
