@@ -1,14 +1,14 @@
-const form = document.querySelector(".form");
+const profileForm = document.querySelector(".form");
 const profileName = document.querySelector(".profile__name");
 const profileDesc = document.querySelector(".profile__desc");
-const profileNameInput = form.querySelector(".form__input_type_name");
-const profileDescInput = form.querySelector(".form__input_type_desc");
+const profileNameInput = profileForm.querySelector(".form__input_type_name");
+const profileDescInput = profileForm.querySelector(".form__input_type_desc");
 
-function handleFormSubmit(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = profileNameInput.value;
   profileDesc.textContent = profileDescInput.value;
-  toggleModal();
+  closeModal(profileModal);
 }
 
-form.addEventListener("submit", handleFormSubmit);
+profileForm.addEventListener("submit", handleProfileFormSubmit);
