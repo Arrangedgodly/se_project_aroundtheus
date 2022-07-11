@@ -6,6 +6,7 @@
   width: 282px;
   height: 361px;
   margin: 0 auto auto auto;
+  position: relative;
 }
 
 .card__image {

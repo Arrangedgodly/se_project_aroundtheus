@@ -45,10 +45,24 @@
   min-width: 21px;
   min-height: 18px;
   margin: 31px 30px 30px 28px;
+  transition: background-image 0.5s ease-in-out;
 }
 
 .button_type_like:hover {
   opacity: 0.5;
+}
+
+.button_type_like_filled {
+  background-image: url("../images/heart-icon-filled.svg");
+}
+
+.button_type_trash {
+  background-image: url("../images/trash-button.svg");
+  min-width: 18px;
+  min-height: 19.3px;
+  position: absolute;
+  top: 18px;
+  right: 15px;
 }
 
 @media screen and (max-width: 1024px) {
