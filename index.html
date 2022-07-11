@@ -18,8 +18,10 @@
     <script src="./scripts/index.js" defer></script>
     <script src="./scripts/modal.js" defer></script>
     <script src="./scripts/profile-modal.js" defer></script>
-    <script src="./scripts/form.js" defer></script>
+    <script src="./scripts/profile-form.js" defer></script>
     <script src="./scripts/card.js" defer></script>
+    <script src="./scripts/card-modal.js" defer></script>
+    <script src="./scripts/card-form.js" defer></script>
   </head>
   <body>
     <div class="page">
@@ -27,33 +29,6 @@
         <img class="logo" src="./images/logo.svg" alt="around the us logo" />
       </header>
       <main class="page__main">
-        <div class="profile-modal">
-          <div class="profile-modal__container">
-            <form class="form">
-              <h4 class="form__header">Edit profile</h4>
-              <label for="profileName" class="form__label">
-                <input
-                  class="form__input form__input_type_name"
-                  type="text"
-                  name="profileName"
-                  placeholder="Jacques Cousteau"
-                  required
-                />
-              </label>
-              <label for="profileDesc" class="form__label">
-                <input
-                  class="form__input form__input_type_desc"
-                  type="text"
-                  name="profileDesc"
-                  placeholder="Explorer"
-                  required
-                />
-              </label>
-              <button type="submit" class="form__button">Save</button>
-            </form>
-            <button class="button button_type_close"></button>
-          </div>
-        </div>
         <section class="profile">
           <img
             class="profile__image"
@@ -91,5 +66,28 @@
         <p class="footer__copyright">© 2022 Around the US</p>
       </footer>
     </div>
+    <template id="modal">
+      <div class="modal">
+        <div class="modal__container">
+          <form class="form">
+            <h4 class="form__header"></h4>
+              <input
+                class="form__input form__input_type_name"
+                type="text"
+                name="profileName"
+                required
+              />
+              <input
+                class="form__input form__input_type_desc"
+                type="text"
+                name="profileDesc"
+                required
+              />
+            <button type="submit" class="form__button">Save</button>
+          </form>
+          <button class="button button_type_close"></button>
+        </div>
+      </div>
+    </template>
   </body>
 </html>

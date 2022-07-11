@@ -17,4 +17,8 @@ function renderCard(card) {
   cards.append(card);
 }
 
+function renderNewCard(card) {
+  cards.prepend(card);
+}
+
 initialCards.forEach(element => renderCard(createCard(element)));
