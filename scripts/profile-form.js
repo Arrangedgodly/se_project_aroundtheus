@@ -1,6 +1,6 @@
 const profileForm = profileModal.querySelector(".form");
-const profileName = profileModal.querySelector(".profile__name");
-const profileDesc = profileModal.querySelector(".profile__desc");
+const profileName = document.querySelector(".profile__name");
+const profileDesc = document.querySelector(".profile__desc");
 const profileNameInput = profileForm.querySelector(".form__input_type_name");
 const profileDescInput = profileForm.querySelector(".form__input_type_desc");
 
