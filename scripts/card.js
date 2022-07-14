@@ -22,6 +22,13 @@ function createCard(data) {
   }
   cardLikeButton.addEventListener("click", changeCardLikeButtonFill);
 
+  const cardImageButton = cardElement.querySelector(".button_type_image");
+  function generateUniqueCardModal() {
+    renderImageModal(data);
+  }
+
+  cardImageButton.addEventListener("click", generateUniqueCardModal);
+
   const cardTitle = data.name;
   const cardLink = data.link;
   cardElementImage.setAttribute("src", cardLink);

@@ -2,17 +2,20 @@ function createImageModal(data) {
   const imageModalTemplate = document.querySelector("#image-modal").content;
   const imageModalElement = imageModalTemplate.querySelector(".modal").cloneNode(true);
   imageModalElement.classList.add("image-modal");
-  const imageModalBackgroundButton = imageModalElement.querySelector(".button_type_image");
+  imageModalElement.classList.add("modal__opened");
   const imageModalBackground = imageModalElement.querySelector(".modal__image");
   imageModalBackground.setAttribute("src", data.link);
   imageModalBackground.setAttribute("alt", `A full size view of ${data.link}`);
   const imageModalHeader = imageModalElement.querySelector(".modal__header");
   imageModalHeader.textContent = data.name;
-
-  function openImageModal() {
-    imageModalElement.classList.add("modal__opened");
+  const imageModalCloseButton = imageModalElement.querySelector(".button_type_close");
+  function closeImageModal() {
+    closeModal(imageModalElement);
   }
-  imageModalBackgroundButton.addEventListener("click", openImageModal);
-
+  imageModalCloseButton.addEventListener("click", closeImageModal);
   return imageModalElement;
+}
+
+function renderImageModal(data) {
+  renderModal(createImageModal(data));
 }
