@@ -12,6 +12,7 @@
 
 .modal__opened {
   display: flex;
+  animation: fadeIn .5s;
 }
 
 .modal__container {
@@ -55,4 +56,9 @@
   .modal__container {
     width: 282px;
   }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+    to { opacity: 1; }
 }
