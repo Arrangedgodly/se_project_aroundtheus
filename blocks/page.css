@@ -6,6 +6,7 @@
   align-items: center;
   font-family: 'Inter', sans-serif;
   font-style: normal;
+  min-height: 100vh;
 }
 
 .page__main {
