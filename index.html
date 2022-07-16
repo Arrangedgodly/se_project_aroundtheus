@@ -30,6 +30,63 @@
         <img class="logo" src="./images/logo.svg" alt="around the us logo" />
       </header>
       <main class="page__main">
+          <div class="modal profile-modal">
+            <div class="modal__container">
+              <form class="form">
+                <h4 class="form__header"></h4>
+                  <input
+                    class="form__input form__input_type_name"
+                    type="text"
+                    name="profileName"
+                    placeholder="Name"
+                    required
+                  />
+                  <input
+                    class="form__input form__input_type_desc"
+                    type="text"
+                    name="profileDesc"
+                    placeholder="Job Title"
+                    required
+                  />
+                <button type="submit" class="form__button">Save</button>
+              </form>
+              <button class="button button_type_close"></button>
+            </div>
+          </div>
+          <div class="modal card-modal">
+            <div class="modal__container">
+              <form class="form">
+                <h4 class="form__header"></h4>
+                  <input
+                    class="form__input form__input_type_name"
+                    type="text"
+                    name="profileName"
+                    placeholder="Title"
+                    required
+                  />
+                  <input
+                    class="form__input form__input_type_desc"
+                    type="text"
+                    name="profileDesc"
+                    placeholder="Image Link"
+                    required
+                  />
+                <button type="submit" class="form__button">Save</button>
+              </form>
+              <button class="button button_type_close"></button>
+            </div>
+          </div>
+          <div class="modal image-modal">
+            <div class="modal__container_alt">
+              <img
+                class="modal__image"
+                src=" "
+                alt=" "
+              >
+              <h4 class="modal__header"></h4>
+              <button class="button button_type_close"></button>
+            </div>
+          </div>
         <section class="profile">
           <img
             class="profile__image"
@@ -70,41 +127,5 @@
         <p class="footer__copyright">© 2022 Around the US</p>
       </footer>
     </div>
-    <template id="modal">
-      <div class="modal">
-        <div class="modal__container">
-          <form class="form">
-            <h4 class="form__header"></h4>
-              <input
-                class="form__input form__input_type_name"
-                type="text"
-                name="profileName"
-                required
-              />
-              <input
-                class="form__input form__input_type_desc"
-                type="text"
-                name="profileDesc"
-                required
-              />
-            <button type="submit" class="form__button">Save</button>
-          </form>
-          <button class="button button_type_close"></button>
-        </div>
-      </div>
-    </template>
-    <template id="image-modal">
-      <div class="modal">
-        <div class="modal__container_alt">
-          <img
-            class="modal__image"
-            src=" "
-            alt=" "
-          >
-          <h4 class="modal__header"></h4>
-          <button class="button button_type_close"></button>
-        </div>
-      </div>
-    </template>
   </body>
 </html>

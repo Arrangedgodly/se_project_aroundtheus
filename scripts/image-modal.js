@@ -1,21 +1,21 @@
-function createImageModal(data) {
-  const imageModalTemplate = document.querySelector("#image-modal").content;
-  const imageModalElement = imageModalTemplate.querySelector(".modal").cloneNode(true);
-  imageModalElement.classList.add("image-modal");
-  imageModalElement.classList.add("modal__opened");
-  const imageModalBackground = imageModalElement.querySelector(".modal__image");
-  imageModalBackground.setAttribute("src", data.link);
-  imageModalBackground.setAttribute("alt", `A full size view of ${data.link}`);
-  const imageModalHeader = imageModalElement.querySelector(".modal__header");
-  imageModalHeader.textContent = data.name;
-  const imageModalCloseButton = imageModalElement.querySelector(".button_type_close");
-  function closeImageModal() {
-    closeModal(imageModalElement);
-  }
-  imageModalCloseButton.addEventListener("click", closeImageModal);
-  return imageModalElement;
+const imageModal = document.querySelector(".image-modal");
+
+function closeImageModal() {
+  closeModal(imageModal);
 }
 
-function renderImageModal(data) {
-  renderModal(createImageModal(data));
+function openImageModal() {
+  openModal(imageModal);
+}
+
+function fillImageModal(data) {
+  const imageModalBackground = imageModal.querySelector(".modal__image");
+  imageModalBackground.setAttribute("src", data.link);
+  imageModalBackground.setAttribute("alt", `A full size view of ${data.link}`);
+  const imageModalHeader = imageModal.querySelector(".modal__header");
+  imageModalHeader.textContent = data.name;
+  const imageModalCloseButton = imageModal.querySelector(".button_type_close");
+  imageModalCloseButton.addEventListener("click", closeImageModal);
+  openImageModal();
+  return imageModal;
 }

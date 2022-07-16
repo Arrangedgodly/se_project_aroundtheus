@@ -1,26 +1,16 @@
-function createProfileModal() {
-  const profileModalTemplate = document.querySelector("#modal").content;
-  const profileModalElement = profileModalTemplate.querySelector(".modal").cloneNode(true);
-  profileModalElement.classList.add("profile-modal");
-  const profileModalHeader = profileModalElement.querySelector(".form__header");
-  profileModalHeader.textContent = "Edit profile";
-  const profileModalInputName = profileModalElement.querySelector(".form__input_type_name");
-  profileModalInputName.setAttribute("placeholder", "Set Your New Name");
-  const profileModalInputDesc = profileModalElement.querySelector(".form__input_type_desc");
-  profileModalInputDesc.setAttribute("placeholder", "Set Your New Job Title");
-  return profileModalElement;
-}
-
-function renderProfileModal() {
-  renderModal(createProfileModal());
-}
-
-renderProfileModal();
-
 const editProfileButton = document.querySelector(".button_type_edit");
 const profileModal = document.querySelector(".profile-modal");
 const closeProfileModalButton = profileModal.querySelector(".button_type_close");
 
+function createProfileModal() {
+  const profileModalHeader = profileModal.querySelector(".form__header");
+  profileModalHeader.textContent = "Edit profile";
+  const profileModalInputName = profileModal.querySelector(".form__input_type_name");
+  profileModalInputName.setAttribute("placeholder", "Set Your New Name");
+  const profileModalInputDesc = profileModal.querySelector(".form__input_type_desc");
+  profileModalInputDesc.setAttribute("placeholder", "Set Your New Job Title");
+  return profileModal;
+}
 
 function openProfileModal() {
     openModal(profileModal);
