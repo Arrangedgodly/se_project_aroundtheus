@@ -24,3 +24,140 @@ const initialCards = [
     link: "https://images.unsplash.com/photo-1583790773386-5c73e9b37d8d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
   }
 ];
+
+function openModal(modal) {
+  modal.classList.add("modal_opened");
+}
+
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
+}
+
+const closeButtons = document.querySelectorAll(".button_type_close");
+
+closeButtons.forEach((button) => {
+  const activeModal = button.closest('.modal');
+  button.addEventListener('click', () => closeModal(activeModal));
+});
+
+const editProfileButton = document.querySelector(".button_type_edit");
+const profileModal = document.querySelector(".profile-modal");
+const closeProfileModalButton = profileModal.querySelector(".button_type_close");
+
+function openProfileModal() {
+    profileNameInput.value = profileName.textContent;
+    profileDescInput.value = profileDesc.textContent;
+    openModal(profileModal);
+}
+
+function closeProfileModal() {
+    closeModal(profileModal);
+}
+
+editProfileButton.addEventListener("click", openProfileModal);
+closeProfileModalButton.addEventListener("click", closeProfileModal);
+
+const profileForm = profileModal.querySelector(".form");
+const profileName = document.querySelector(".profile__name");
+const profileDesc = document.querySelector(".profile__desc");
+const profileNameInput = profileForm.querySelector(".form__input_type_name");
+const profileDescInput = profileForm.querySelector(".form__input_type_desc");
+
+function handleProfileFormSubmit(evt) {
+  evt.preventDefault();
+  profileName.textContent = profileNameInput.value;
+  profileDesc.textContent = profileDescInput.value;
+  closeModal(profileModal);
+}
+
+profileForm.addEventListener("submit", handleProfileFormSubmit);
+
+const cardTemplate = document.querySelector("#card").content;
+const cards = document.querySelector(".cards");
+
+function toggleLike(button) {
+  button.classList.toggle("button_type_like_filled");
+}
+
+function createCard(data) {
+  const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
+  const cardElementImage = cardElement.querySelector(".card__image");
+  const cardElementHeader = cardElement.querySelector(".card__footer-title");
+
+  const cardTrashButton = cardElement.querySelector(".button_type_trash");
+  function removeCard() {
+    cardElement.remove();
+  }
+  cardTrashButton.addEventListener("click", removeCard);
+
+  const cardLikeButton = cardElement.querySelector(".button_type_like");
+
+  cardLikeButton.addEventListener("click", () => toggleLike(cardLikeButton));
+
+  const cardImageButton = cardElement.querySelector(".button_type_image");
+  function openCardImageModal() {
+    fillImageModal(data);
+    openImageModal();
+  }
+
+  cardImageButton.addEventListener("click", openCardImageModal);
+
+  const cardTitle = data.name;
+  const cardLink = data.link;
+  cardElementImage.setAttribute("src", cardLink);
+  cardElementImage.setAttribute("alt", `Photo of ${cardTitle}`);
+  cardElementHeader.textContent = cardTitle;
+  return cardElement;
+}
+
+function renderCard(card) {
+  cards.append(card);
+}
+
+function renderNewCard(card) {
+  cards.prepend(card);
+}
+
+initialCards.forEach((element) => renderCard(createCard(element)));
+
+const addCardButton = document.querySelector(".button_type_add");
+const cardModal = document.querySelector(".card-modal");
+
+function openCardModal() {
+    openModal(cardModal);
+}
+
+addCardButton.addEventListener("click", openCardModal);
+
+const cardForm = cardModal.querySelector(".form");
+const cardNameInput = cardForm.querySelector(".form__input_type_name");
+const cardImageInput = cardForm.querySelector(".form__input_type_desc");
+
+function handleCardFormSubmit(evt) {
+  evt.preventDefault();
+  const newCard = {
+    name: cardNameInput.value,
+    link: cardImageInput.value
+  };
+  renderNewCard(createCard(newCard));
+  evt.target.reset();
+  closeModal(cardModal);
+}
+
+cardForm.addEventListener("submit", handleCardFormSubmit);
+
+const imageModal = document.querySelector(".image-modal");
+const imageModalBackground = imageModal.querySelector(".modal__image");
+const imageModalHeader = imageModal.querySelector(".modal__header");
+
+function openImageModal() {
+  openModal(imageModal);
+}
+
+function fillImageModal(data) {
+  imageModalBackground.setAttribute("src", data.link);
+  imageModalBackground.setAttribute("alt", `A full size view of ${data.link}`);
+  imageModalHeader.textContent = data.name;
+  openImageModal();
+  return imageModal;
+}
