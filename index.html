@@ -16,6 +16,7 @@
     />
     <link rel="stylesheet" href="./pages/index.css" />
     <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/validate.js" defer></script>
   </head>
   <body>
     <div class="page">
@@ -25,46 +26,60 @@
       <main class="page__main">
           <div class="modal profile-modal">
             <div class="modal__container">
-              <form class="form">
+              <form class="form" name="profileForm" novalidate>
                 <h4 class="form__header">Edit Profile</h4>
+                <fieldset class="form__set">
                   <input
                     class="form__input form__input_type_name"
                     type="text"
-                    name="profileName"
+                    id="profile-input"
                     placeholder="Name"
+                    minlength="2"
+                    maxlength="40"
                     required
                   />
+                  <span class="profile-input-error form__input-error"></span> 
                   <input
                     class="form__input form__input_type_desc"
                     type="text"
-                    name="profileDesc"
+                    id="desc-input"
                     placeholder="Job Title"
+                    minlength="2"
+                    maxlength="200"
                     required
                   />
-                <button type="submit" class="form__button">Save</button>
+                  <span class="desc-input-error form__input-error"></span>
+                <button type="submit" class="form__submit">Save</button>
+                </fieldset>
               </form>
               <button class="button button_type_close"></button>
             </div>
           </div>
           <div class="modal card-modal">
             <div class="modal__container">
-              <form class="form">
+              <form class="form" name="cardForm" novalidate>
                 <h4 class="form__header">Add a New Place</h4>
+                <fieldset class="form__set">
                   <input
                     class="form__input form__input_type_name"
                     type="text"
-                    name="profileName"
+                    id="place-input"
                     placeholder="Title"
+                    minlength="1"
+                    maxlength="30"
                     required
                   />
+                  <span class="place-input-error form__input-error"></span>
                   <input
                     class="form__input form__input_type_desc"
-                    type="text"
-                    name="profileDesc"
+                    type="url"
+                    id="link-input"
                     placeholder="Image Link"
                     required
                   />
-                <button type="submit" class="form__button">Save</button>
+                  <span class="link-input-error form__input-error"></span>
+                <button type="submit" class="form__submit">Save</button>
+                </fieldset>
               </form>
               <button class="button button_type_close"></button>
             </div>
