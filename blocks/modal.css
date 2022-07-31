@@ -1,18 +1,18 @@
 .modal {
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
-  max-width: 1280px;
   height: 100%;
   position: fixed;
   top: 0;
+  left: 0;
   display: none;
-  align-items: center;
-  justify-content: center;
   z-index: 1;
 }
 
 .modal_opened {
   display: flex;
+  align-items: center;
+  justify-content: center;
   animation: fadeIn .5s;
 }
 
