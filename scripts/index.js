@@ -27,10 +27,12 @@ const initialCards = [
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", handleEscKey);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", handleEscKey);
 }
 
 const closeButtons = document.querySelectorAll(".button_type_close");
@@ -42,7 +44,6 @@ closeButtons.forEach((button) => {
 
 const editProfileButton = document.querySelector(".button_type_edit");
 const profileModal = document.querySelector(".profile-modal");
-const closeProfileModalButton = profileModal.querySelector(".button_type_close");
 
 function openProfileModal() {
     profileNameInput.value = profileName.textContent;
@@ -50,12 +51,7 @@ function openProfileModal() {
     openModal(profileModal);
 }
 
-function closeProfileModal() {
-    closeModal(profileModal);
-}
-
 editProfileButton.addEventListener("click", openProfileModal);
-closeProfileModalButton.addEventListener("click", closeProfileModal);
 
 const profileForm = profileModal.querySelector(".form");
 const profileName = document.querySelector(".profile__name");
@@ -132,6 +128,7 @@ addCardButton.addEventListener("click", openCardModal);
 const cardForm = cardModal.querySelector(".form");
 const cardNameInput = cardForm.querySelector(".form__input_type_name");
 const cardImageInput = cardForm.querySelector(".form__input_type_desc");
+const cardFormSubmit = cardForm.querySelector(".form__submit");
 
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
@@ -141,6 +138,8 @@ function handleCardFormSubmit(evt) {
   };
   renderNewCard(createCard(newCard));
   evt.target.reset();
+  cardFormSubmit.classList.add("form__submit_inactive");
+  cardFormSubmit.disabled = true;
   closeModal(cardModal);
 }
 
@@ -164,18 +163,19 @@ function fillImageModal(data) {
 
 const modals = document.querySelectorAll(".modal");
 
-function escapeKeyHandler(evt) {
-  if (evt.keyCode === 27) {
+function handleEscKey(evt) {
+  if (evt.key === 'Escape') {
     modals.forEach(modal => closeModal(modal));
   }
 }
 
-document.addEventListener("keydown", escapeKeyHandler);
-
-document.addEventListener("mouseup", (e) => {
-  let openedModal = document.querySelector(".modal_opened");
-  if (openedModal === null) {return;}
-  else if (e.target === openedModal) {
-    closeModal(openedModal);
-  };
+modals.forEach((modal) => {
+  modal.addEventListener('mousedown', (evt) => {
+      if (evt.target.classList.contains('modal_opened')) {
+          closeModal(modal);
+      };
+      if (evt.target.classList.contains('modal__close')) {
+        closeModal(modal);
+      };
+  });
 });
