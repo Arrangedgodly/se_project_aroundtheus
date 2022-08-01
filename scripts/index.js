@@ -35,13 +35,6 @@ function closeModal(modal) {
   document.removeEventListener("keydown", handleEscKey);
 }
 
-const closeButtons = document.querySelectorAll(".button_type_close");
-
-closeButtons.forEach((button) => {
-  const activeModal = button.closest('.modal');
-  button.addEventListener('click', () => closeModal(activeModal));
-});
-
 const editProfileButton = document.querySelector(".button_type_edit");
 const profileModal = document.querySelector(".profile-modal");
 
@@ -174,7 +167,7 @@ modals.forEach((modal) => {
       if (evt.target.classList.contains('modal_opened')) {
           closeModal(modal);
       };
-      if (evt.target.classList.contains('modal__close')) {
+      if (evt.target.classList.contains('button_type_close')) {
         closeModal(modal);
       };
   });
