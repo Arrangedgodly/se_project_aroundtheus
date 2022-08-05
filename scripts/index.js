@@ -110,6 +110,7 @@ addCardButton.addEventListener("click", openCardModal);
 const cardForm = cardModal.querySelector(".form");
 const cardNameInput = cardForm.querySelector(".form__input_type_name");
 const cardImageInput = cardForm.querySelector(".form__input_type_desc");
+const cardFormSubmit = cardForm.querySelector(".form__submit");
 
 function handleCardFormSubmit(evt) {
   evt.preventDefault();
@@ -119,6 +120,8 @@ function handleCardFormSubmit(evt) {
   };
   renderNewCard(createCard(newCard));
   evt.target.reset();
+  cardFormSubmit.classList.add("form__submit_inactive");
+  cardFormSubmit.disabled = true;
   closeModal(cardModal);
 }
 
