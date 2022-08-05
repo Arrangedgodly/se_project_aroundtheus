@@ -15,8 +15,6 @@
       content="Practicum, Yandex, HTML, CSS, Figma, Responsive Design"
     />
     <link rel="stylesheet" href="./pages/index.css" />
-    <script src="./scripts/index.js" defer></script>
-    <script src="./scripts/validate.js" defer></script>
   </head>
   <body>
     <div class="page">
@@ -57,7 +55,7 @@
           </div>
           <div class="modal card-modal">
             <div class="modal__container">
-              <form class="form" name="cardForm" novalidate>
+              <form class="form card-form" name="cardForm" novalidate>
                 <h4 class="form__header">Add a New Place</h4>
                 <fieldset class="form__set">
                   <input
@@ -135,5 +133,7 @@
         <p class="footer__copyright">© 2022 Around the US</p>
       </footer>
     </div>
+  <script type="module" src="./scripts/index.js" defer></script>
+  <script src="./scripts/utils.js" defer></script>
   </body>
 </html>

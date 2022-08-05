@@ -1,3 +1,5 @@
+import { card } from "./Card.js/";
+
 const initialCards = [
   {
     name: "Venice",
@@ -25,24 +27,14 @@ const initialCards = [
   }
 ];
 
-function openModal(modal) {
-  modal.classList.add("modal_opened");
-}
-
-function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-}
-
-const closeButtons = document.querySelectorAll(".button_type_close");
-
-closeButtons.forEach((button) => {
-  const activeModal = button.closest('.modal');
-  button.addEventListener('click', () => closeModal(activeModal));
+initialCards.forEach((element) => {
+  const card = new Card(element, "#card");
+  const cardElement = card.generateCard();
+  cards.append(cardElement);
 });
 
 const editProfileButton = document.querySelector(".button_type_edit");
 const profileModal = document.querySelector(".profile-modal");
-const closeProfileModalButton = profileModal.querySelector(".button_type_close");
 
 function openProfileModal() {
     profileNameInput.value = profileName.textContent;
@@ -50,12 +42,7 @@ function openProfileModal() {
     openModal(profileModal);
 }
 
-function closeProfileModal() {
-    closeModal(profileModal);
-}
-
 editProfileButton.addEventListener("click", openProfileModal);
-closeProfileModalButton.addEventListener("click", closeProfileModal);
 
 const profileForm = profileModal.querySelector(".form");
 const profileName = document.querySelector(".profile__name");
@@ -74,10 +61,6 @@ profileForm.addEventListener("submit", handleProfileFormSubmit);
 
 const cardTemplate = document.querySelector("#card").content;
 const cards = document.querySelector(".cards");
-
-function toggleLike(button) {
-  button.classList.toggle("button_type_like_filled");
-}
 
 function createCard(data) {
   const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
@@ -110,15 +93,10 @@ function createCard(data) {
   return cardElement;
 }
 
-function renderCard(card) {
-  cards.append(card);
-}
 
 function renderNewCard(card) {
   cards.prepend(card);
 }
-
-initialCards.forEach((element) => renderCard(createCard(element)));
 
 const addCardButton = document.querySelector(".button_type_add");
 const cardModal = document.querySelector(".card-modal");
@@ -161,21 +139,3 @@ function fillImageModal(data) {
   openImageModal();
   return imageModal;
 }
-
-const modals = document.querySelectorAll(".modal");
-
-function escapeKeyHandler(evt) {
-  if (evt.keyCode === 27) {
-    modals.forEach(modal => closeModal(modal));
-  }
-}
-
-document.addEventListener("keydown", escapeKeyHandler);
-
-document.addEventListener("mouseup", (e) => {
-  let openedModal = document.querySelector(".modal_opened");
-  if (openedModal === null) {return;}
-  else if (e.target === openedModal) {
-    closeModal(openedModal);
-  };
-});
