@@ -1,5 +1,3 @@
-import { card } from "./Card.js/";
-
 const initialCards = [
   {
     name: "Venice",
@@ -27,11 +25,9 @@ const initialCards = [
   }
 ];
 
-initialCards.forEach((element) => {
-  const card = new Card(element, "#card");
-  const cardElement = card.generateCard();
-  cards.append(cardElement);
-});
+import {Card} from './Card.js';
+import {FormValidator} from './FormValidator.js';
+
 
 const editProfileButton = document.querySelector(".button_type_edit");
 const profileModal = document.querySelector(".profile-modal");
@@ -62,41 +58,6 @@ profileForm.addEventListener("submit", handleProfileFormSubmit);
 const cardTemplate = document.querySelector("#card").content;
 const cards = document.querySelector(".cards");
 
-function createCard(data) {
-  const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
-  const cardElementImage = cardElement.querySelector(".card__image");
-  const cardElementHeader = cardElement.querySelector(".card__footer-title");
-
-  const cardTrashButton = cardElement.querySelector(".button_type_trash");
-  function removeCard() {
-    cardElement.remove();
-  }
-  cardTrashButton.addEventListener("click", removeCard);
-
-  const cardLikeButton = cardElement.querySelector(".button_type_like");
-
-  cardLikeButton.addEventListener("click", () => toggleLike(cardLikeButton));
-
-  const cardImageButton = cardElement.querySelector(".button_type_image");
-  function openCardImageModal() {
-    fillImageModal(data);
-    openImageModal();
-  }
-
-  cardImageButton.addEventListener("click", openCardImageModal);
-
-  const cardTitle = data.name;
-  const cardLink = data.link;
-  cardElementImage.setAttribute("src", cardLink);
-  cardElementImage.setAttribute("alt", `Photo of ${cardTitle}`);
-  cardElementHeader.textContent = cardTitle;
-  return cardElement;
-}
-
-
-function renderNewCard(card) {
-  cards.prepend(card);
-}
 
 const addCardButton = document.querySelector(".button_type_add");
 const cardModal = document.querySelector(".card-modal");
@@ -127,18 +88,20 @@ function handleCardFormSubmit(evt) {
 
 cardForm.addEventListener("submit", handleCardFormSubmit);
 
-const imageModal = document.querySelector(".image-modal");
-const imageModalBackground = imageModal.querySelector(".modal__image");
-const imageModalHeader = imageModal.querySelector(".modal__header");
+initialCards.forEach((element) => {
+  const card = new Card(element, "#card");
+  const cardElement = card.generateCard();
+  cards.append(cardElement);
+});
 
-function openImageModal() {
-  openModal(imageModal);
+const config = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: 'form__submit',
+  inactiveButtonClass: 'form__submit_inactive',
+  inputErrorClass: 'form__input_type_error',
+  errorClass: 'form__input-error_active'
 }
 
-function fillImageModal(data) {
-  imageModalBackground.setAttribute("src", data.link);
-  imageModalBackground.setAttribute("alt", `A full size view of ${data.link}`);
-  imageModalHeader.textContent = data.name;
-  openImageModal();
-  return imageModal;
-}
+const addFormValidator = new FormValidator(config, ".card-form");
+addFormValidator.enableValidation();

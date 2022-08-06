@@ -1,7 +1,10 @@
-export default class Card {
+export class Card {
   constructor(data, cardSelector) {
-    this._title = data.title;
+    this._title = data.name;
     this._link = data.link;
+    this._popup = document.querySelector(".image-modal");
+    this._popupImage = this._popup.querySelector(".modal__image");
+    this._popupHeader = this._popup.querySelector(".modal__header");
 
     this._cardSelector = cardSelector;
   }
@@ -38,17 +41,10 @@ export default class Card {
   }
 
   _handleOpenPopup() {
-    this._popup = document.querySelector(".image-modal");
-    this._popupImage = this._popup.querySelector(".modal__image");
-    this._popupHeader = this._popup.querySelector(".modal__header");
-
     this._popupImage.src = this._link;
+    this._popupImage.alt = `A full size view of ${this._title}`;
     this._popupHeader.textContent = this._title;
-    this._popup.classList.add("modal__opened");
-  }
-
-  _handleClosePopup() {
-    this._popup.classList.remove("modal__opened");
+    this._popup.classList.add("modal_opened");
   }
 
   _setEventListeners() {
@@ -57,11 +53,11 @@ export default class Card {
       .addEventListener("click", () => this._handleTrashButton());
 
     this._element
-      .querySelector(".card__image")
+      .querySelector(".button_type_image")
       .addEventListener("click", () => this._handleOpenPopup());
 
     this._element
-      .querySelector(".button_type_close")
-      .addEventListener("click", () => this._handleClosePopup());
+      .querySelector(".button_type_like")
+      .addEventListener("click", () => this._handleLikeIcon());
   }
 }

@@ -1,48 +1,62 @@
-class FormValidator {
+export class FormValidator {
 
   constructor(settings, formElement) {
     this._inputSelector = settings.inputSelector;
     this._submitButtonSelector = settings.submitButtonSelector;
     this._inactiveButtonClass = settings.inactiveButtonClass;
     this._inputErrorClass = settings.inputErrorClass;
-    this.errorClass = settings.errorClass;
+    this._errorClass = settings.errorClass;
 
-    this._form = formElement;
+    this._form = document.querySelector(formElement);
+
+    this._inputEls = [this._form.querySelectorAll(this._inputSelector)];
+    this._submitButton = this._form.querySelector(this._submitButtonSelector);
+  }
+
+  _showInputError(inputElement) {
+    const errorMessageEl = this._form.querySelector(`#${inputElement.id}-error`);
+    inputElement.classList.add(this._inputErrorClass);
+    errorMessageEl.textContent = inputElement.validationMessage;
+    errorMessageEl.classList.add(this._errorClass);
+  }
+
+  _hideInputError(inputElement) {
+    const errorMessageEl = this._form.querySelector(`#${inputElement.id}-error`);
+    inputElement.classList.remove(this._inputErrorClass);
+    errorMessageEl.textContent = "";
+    errorMessageEl.classList.remove(this._errorClass);
   }
 
   _checkInputValidity(inputElement) {
-
+    if (!inputElement.validity.valid) {
+      _showInputError(inputElement);
+    } else {
+      _hideInputError(inputElement);
+    }
   }
 
-  _toggleButtonState(inputEls, submitButton, options) {
-    const {inactiveButtonClass} = options;
+  _toggleButtonState() {
     let foundInvalid = false;
-    inputEls.forEach(input => {
+    this._inputEls.forEach(input => {
       if (!input.validity.valid) {
         foundInvalid = true;
       }
     });
   
     if (foundInvalid) {
-      submitButton.classList.add(inactiveButtonClass);
-      submitButton.disabled = true;
+      this._submitButton.classList.add(this._inactiveButtonClass);
+      this._submitButton.disabled = true;
     } else {
-      submitButton.classList.remove(inactiveButtonClass);
-      submitButton.disabled = false;
+      this._submitButton.classList.remove(this._inactiveButtonClass);
+      this._submitButton.disabled = false;
     }
   };
 
-  _hasInvalidInput(inputList) {
-
-  }
-
   _setEventListeners() {
-    this._inputEls = [...this._form.querySelectorAll(this._inputSelector)];
-    this._submitButton = this._form.querySelector(this._submitButtonSelector);
-    inputEls.forEach(inputEl => {
-      inputEl.addEventListener("input", (e) => {
-        checkInputValidity(formEl, inputEl, options);
-        toggleButtonState(inputEls, submitButton, options);
+    this._inputEls.forEach((element) => {
+      element.addEventListener("input", (e) => {
+        _checkInputValidity(element);
+        _toggleButtonState();
       });
     });
   }
@@ -55,15 +69,3 @@ class FormValidator {
     this._setEventListeners();
   }
 }
-
-const config = {
-  formSelector: '.form',
-  inputSelector: '.form__input',
-  submitButtonSelector: 'form__submit',
-  inactiveButtonClass: 'form__submit_inactive',
-  inputErrorClass: 'form__input_type_error',
-  errorClass: 'form__input-error_active'
-}
-
-const addFormValidator = new FormValidator(config, ".card-form");
-addFormValidator.enableValidation();
