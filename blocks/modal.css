@@ -5,15 +5,21 @@
   position: fixed;
   top: 0;
   left: 0;
-  display: none;
-  z-index: 1;
-}
-
-.modal_opened {
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: fadeIn .5s;
+  z-index: 1;
+  visibility: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: visibility 0s 0.5s, opacity 0.5s linear;
+}
+
+.modal_opened {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+  transition: visibility 0s, opacity 0.5s linear;
 }
 
 .modal__container {
@@ -57,9 +63,4 @@
   .modal__container {
     width: 282px;
   }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-    to { opacity: 1; }
 }

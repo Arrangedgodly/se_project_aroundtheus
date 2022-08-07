@@ -1,6 +1,6 @@
 import {Card} from './Card.js';
 
-function openModal(modal) {
+export function openModal(modal) {
   modal.classList.add("modal_opened");
 }
 
@@ -78,6 +78,17 @@ function handleCardFormSubmit(evt) {
   cardFormSubmit.classList.add("form__submit_inactive");
   cardFormSubmit.disabled = true;
   closeModal(cardModal);
+}
+
+export function handleCardPopup(data) {
+  const popup = document.querySelector(".image-modal");
+  const popupImage = popup.querySelector(".modal__image");
+  const popupHeader = popup.querySelector(".modal__header");
+
+  popupImage.src = data.link;
+  popupImage.alt = `A full size view of ${data.title}`;
+  popupHeader.textContent = data.title;
+  openModal(popup);
 }
 
 cardForm.addEventListener("submit", handleCardFormSubmit);

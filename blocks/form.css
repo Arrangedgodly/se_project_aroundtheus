@@ -70,6 +70,11 @@
   margin-bottom: 36.51px;
 }
 
+.form__submit:hover:not(:disabled) {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
 .form__submit_inactive {
   background-color: rgba(0, 0, 0, 0);
   color:rgba(0, 0, 0, 0.2);

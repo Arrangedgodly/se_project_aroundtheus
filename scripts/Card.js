@@ -1,63 +1,52 @@
+import { handleCardPopup } from "./utils.js";
+
 export class Card {
   constructor(data, cardSelector) {
+    this._data = data;
     this._title = data.name;
     this._link = data.link;
-    this._popup = document.querySelector(".image-modal");
-    this._popupImage = this._popup.querySelector(".modal__image");
-    this._popupHeader = this._popup.querySelector(".modal__header");
-
+    
     this._cardSelector = cardSelector;
   }
 
-  _getTemplate() {
+  _getTemplate = () => {
     return document
       .querySelector(this._cardSelector)
       .content.querySelector(".card")
       .cloneNode(true);
   }
 
-  generateCard() {
+  generateCard = () => {
     this._element = this._getTemplate();
-    this._cardTitle = this._element.querySelector(".card__footer-title");
-    this._cardImage = this._element.querySelector(".card__image");
+    const cardTitle = this._element.querySelector(".card__footer-title");
+    const cardImage = this._element.querySelector(".card__image");
+    this._cardLikeButton = this._element.querySelector(".button_type_like");
+    this._cardTrashButton = this._element.querySelector(".button_type_trash");
+    this._cardImageButton = this._element.querySelector(".button_type_image");
 
-    this._cardTitle.textContent = this._title;
-    this._cardImage.src = this._link;
-    this._cardImage.alt = `A Scenic Photo of ${this._title}`;
+    cardTitle.textContent = this._title;
+    cardImage.src = this._link;
+    cardImage.alt = `A Scenic Photo of ${this._title}`;
 
     this._setEventListeners();
 
     return this._element;
   }
 
-  _handleLikeIcon() {
-    this._element
-      .querySelector(".button_type_like")
-      .classList.toggle("button_type_like_filled");
+  _handleLikeIcon = () => {
+      this._cardLikeButton.classList.toggle("button_type_like_filled");
   }
 
-  _handleTrashButton() {
+  _handleTrashButton = () => {
     this._element.remove();
-  }
-
-  _handleOpenPopup() {
-    this._popupImage.src = this._link;
-    this._popupImage.alt = `A full size view of ${this._title}`;
-    this._popupHeader.textContent = this._title;
-    this._popup.classList.add("modal_opened");
+    this._element = null;
   }
 
   _setEventListeners() {
-    this._element
-      .querySelector(".button_type_trash")
-      .addEventListener("click", () => this._handleTrashButton());
+      this._cardTrashButton.addEventListener("click", () => this._handleTrashButton());
 
-    this._element
-      .querySelector(".button_type_image")
-      .addEventListener("click", () => this._handleOpenPopup());
+      this._cardImageButton.addEventListener("click", () => handleCardPopup(this._data));
 
-    this._element
-      .querySelector(".button_type_like")
-      .addEventListener("click", () => this._handleLikeIcon());
+      this._cardLikeButton.addEventListener("click", () => this._handleLikeIcon());
   }
 }

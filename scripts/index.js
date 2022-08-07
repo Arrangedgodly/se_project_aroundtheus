@@ -25,8 +25,8 @@ const initialCards = [
   }
 ];
 
-import {Card} from './Card.js';
-import {FormValidator} from './FormValidator.js';
+import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
 
 const cards = document.querySelector(".cards");
 
