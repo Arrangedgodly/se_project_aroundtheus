@@ -86,8 +86,8 @@ export function handleCardPopup(data) {
   const popupHeader = popup.querySelector(".modal__header");
 
   popupImage.src = data.link;
-  popupImage.alt = `A full size view of ${data.title}`;
-  popupHeader.textContent = data.title;
+  popupImage.alt = `A full size view of ${data.name}`;
+  popupHeader.textContent = data.name;
   openModal(popup);
 }
 
