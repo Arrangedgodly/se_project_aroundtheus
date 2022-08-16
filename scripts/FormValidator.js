@@ -43,7 +43,7 @@ export class FormValidator {
   }
 
   _checkFormValidity = () => {
-    this._inputEls.every((input) => input.validity.valid);
+    return this._inputEls.every((input) => input.validity.valid);
   };
 
   toggleButtonState() {

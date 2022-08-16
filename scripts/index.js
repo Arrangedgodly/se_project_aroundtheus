@@ -27,19 +27,7 @@ const initialCards = [
 
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
-import { escapeKeyHandler, closeModalOnRemoteClick } from './utils.js';
-
-export function openModal(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keydown", escapeKeyHandler);
-  modal.addEventListener("mousedown", closeModalOnRemoteClick);
-}
-
-export function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", escapeKeyHandler);
-  modal.removeEventListener("mousedown", closeModalOnRemoteClick);
-}
+import { openModal, closeModal } from './utils.js';
 
 const editProfileButton = document.querySelector(".button_type_edit");
 const profileModal = document.querySelector(".profile-modal");
