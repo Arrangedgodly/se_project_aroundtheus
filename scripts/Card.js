@@ -1,12 +1,11 @@
-import { handleCardPopup } from "./utils.js";
-
 export class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, handleCardPopup) {
     this._data = data;
     this._title = data.name;
     this._link = data.link;
     
     this._cardSelector = cardSelector;
+    this.handleCardPopUp = handleCardPopup;
   }
 
   _getTemplate = () => {
@@ -42,10 +41,14 @@ export class Card {
     this._element = null;
   }
 
+  openPopUp = (data) => {
+    this.handleCardPopUp(data);
+  }
+
   _setEventListeners() {
       this._cardTrashButton.addEventListener("click", () => this._handleTrashButton());
 
-      this._cardImageButton.addEventListener("click", () => handleCardPopup(this._data));
+      this._cardImageButton.addEventListener("click", () => this.openPopUp(this._data));
 
       this._cardLikeButton.addEventListener("click", () => this._handleLikeIcon());
   }

@@ -27,13 +27,110 @@ const initialCards = [
 
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
+import { escapeKeyHandler, closeModalOnRemoteClick } from './utils.js';
+
+export function openModal(modal) {
+  modal.classList.add("modal_opened");
+  document.addEventListener("keydown", escapeKeyHandler);
+  modal.addEventListener("mousedown", closeModalOnRemoteClick);
+}
+
+export function closeModal(modal) {
+  modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", escapeKeyHandler);
+  modal.removeEventListener("mousedown", closeModalOnRemoteClick);
+}
+
+const editProfileButton = document.querySelector(".button_type_edit");
+const profileModal = document.querySelector(".profile-modal");
+
+function fillProfileForm() {
+  profileNameInput.value = profileName.textContent;
+  profileDescInput.value = profileDesc.textContent;
+}
+
+function openProfileModal() {
+    fillProfileForm();
+    openModal(profileModal);
+}
+
+editProfileButton.addEventListener("click", openProfileModal);
+
+const addCardButton = document.querySelector(".button_type_add");
+const cardModal = document.querySelector(".card-modal");
+
+function openCardModal() {
+    openModal(cardModal);
+}
+
+addCardButton.addEventListener("click", openCardModal);
+
+const closeButtons = document.querySelectorAll(".button_type_close");
+
+closeButtons.forEach((button) => {
+  const activeModal = button.closest('.modal');
+  button.addEventListener('click', () => closeModal(activeModal));
+});
+
+const profileForm = profileModal.querySelector(".form");
+const profileName = document.querySelector(".profile__name");
+const profileDesc = document.querySelector(".profile__desc");
+const profileNameInput = profileForm.querySelector(".form__input_type_name");
+const profileDescInput = profileForm.querySelector(".form__input_type_desc");
+
+function handleProfileFormSubmit(evt) {
+  evt.preventDefault();
+  profileName.textContent = profileNameInput.value;
+  profileDesc.textContent = profileDescInput.value;
+  closeModal(profileModal);
+}
+
+profileForm.addEventListener("submit", handleProfileFormSubmit);
+
+function createCard(data) {
+  const card = new Card(data, "#card", handleCardPopup );
+  const cardElement = card.generateCard();
+  return cardElement;
+}
 
 const cards = document.querySelector(".cards");
 
+function renderNewCard(card) {
+  cards.prepend(card);
+}
+
+const cardForm = cardModal.querySelector(".form");
+const cardNameInput = cardForm.querySelector(".form__input_type_name");
+const cardImageInput = cardForm.querySelector(".form__input_type_desc");
+const cardFormSubmit = cardForm.querySelector(".form__submit");
+
+function handleCardFormSubmit(evt) {
+  evt.preventDefault();
+  const newCard = {
+    name: cardNameInput.value,
+    link: cardImageInput.value
+  };
+  renderNewCard(createCard(newCard));
+  evt.target.reset();
+  addFormValidator.toggleButtonState();
+  closeModal(cardModal);
+}
+
+const popup = document.querySelector(".image-modal");
+const popupImage = popup.querySelector(".modal__image");
+const popupHeader = popup.querySelector(".modal__header");
+
+export function handleCardPopup(data) {
+  popupImage.src = data.link;
+  popupImage.alt = `A full size view of ${data.name}`;
+  popupHeader.textContent = data.name;
+  openModal(popup);
+}
+
+cardForm.addEventListener("submit", handleCardFormSubmit);
+
 initialCards.forEach((element) => {
-  const card = new Card(element, "#card");
-  const cardElement = card.generateCard();
-  cards.append(cardElement);
+  renderNewCard(createCard(element));
 });
 
 const config = {
