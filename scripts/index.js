@@ -25,8 +25,8 @@ const initialCards = [
   }
 ];
 
-import { Card } from './Card.js';
-import { FormValidator } from './FormValidator.js';
+import { Card } from '../components/Card.js';
+import { FormValidator } from '../components/FormValidator.js';
 import { openModal, closeModal } from './utils.js';
 
 const editProfileButton = document.querySelector(".button_type_edit");
