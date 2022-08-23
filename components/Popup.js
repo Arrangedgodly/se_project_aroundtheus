@@ -32,7 +32,7 @@ class Popup {
   }
 }
 
-class PopupWithImage extends Popup {
+export class PopupWithImage extends Popup {
   constructor(data, popupSelector) {
     super(popupSelector);
     this._name = data.name;
@@ -50,7 +50,7 @@ class PopupWithImage extends Popup {
   }
 }
 
-class PopupWithForm extends Popup {
+export class PopupWithForm extends Popup {
   constructor(popupSelector, handleFunction) {
     super(popupSelector);
     this._handleFunction = handleFunction;

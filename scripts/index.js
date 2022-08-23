@@ -28,6 +28,8 @@ const initialCards = [
 import { Card } from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
 import { openModal, closeModal } from './utils.js';
+import { PopupWithImage, PopupWithForm } from '../components/Popup.js';
+import { UserInfo } from "../components/UserInfo.js";
 
 const editProfileButton = document.querySelector(".button_type_edit");
 const profileModal = document.querySelector(".profile-modal");
@@ -73,20 +75,6 @@ function handleProfileFormSubmit(evt) {
   closeModal(profileModal);
 }
 
-profileForm.addEventListener("submit", handleProfileFormSubmit);
-
-function createCard(data) {
-  const card = new Card(data, "#card", handleCardPopup );
-  const cardElement = card.generateCard();
-  return cardElement;
-}
-
-const cards = document.querySelector(".cards");
-
-function renderNewCard(card) {
-  cards.prepend(card);
-}
-
 const cardForm = cardModal.querySelector(".form");
 const cardNameInput = cardForm.querySelector(".form__input_type_name");
 const cardImageInput = cardForm.querySelector(".form__input_type_desc");
@@ -115,22 +103,36 @@ export function handleCardPopup(data) {
   openModal(popup);
 }
 
-cardForm.addEventListener("submit", handleCardFormSubmit);
-
-initialCards.forEach((element) => {
-  renderNewCard(createCard(element));
-});
-
 const config = {
   formSelector: '.form',
   inputSelector: '.form__input',
   submitButtonSelector: 'form__submit',
   inactiveButtonClass: 'form__submit_inactive',
   inputErrorClass: 'form__input_type_error',
-  errorClass: 'form__input-error_active'
+  errorClass: 'form__input-error_active',
 }
 
 const addFormValidator = new FormValidator(config, ".card-form");
 addFormValidator.enableValidation();
 const editFormValidator = new FormValidator(config, ".profile-form");
 editFormValidator.enableValidation();
+
+function createCard(data) {
+  const card = new Card(data, "#card", handleCardPopup );
+  const cardElement = card.generateCard();
+  return cardElement;
+}
+
+const cards = document.querySelector(".cards");
+
+function renderNewCard(card) {
+  cards.prepend(card);
+}
+
+initialCards.forEach((element) => {
+  renderNewCard(createCard(element));
+});
+
+
+const profilePopup = new PopupWithForm('.profile-modal', handleProfileFormSubmit);
+const cardPopup = new PopupWithForm('.card-modal', handleCardFormSubmit);
