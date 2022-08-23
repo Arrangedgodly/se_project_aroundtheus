@@ -1,5 +1,4 @@
-const profileName = document.querySelector(".profile__name");
-const profileDesc = document.querySelector(".profile__desc");
+import { profileName, profileDesc } from "../utils/constants.js";
 
 export class UserInfo {
   constructor({ userName, userJob }) {
@@ -8,7 +7,7 @@ export class UserInfo {
   }
 
   getUserInfo() {
-    return { userName , userJob };
+    return { userName: profileName.textContent, userJob: profileDesc.textContent };
   }
 
   setUserInfo() {

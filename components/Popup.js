@@ -1,4 +1,4 @@
-const escapeKeyCode = 27;
+import { escapeKeyCode, popupImage, popupHeader } from "../utils/constants.js";
 
 class Popup {
   constructor(popupSelector) {
@@ -37,16 +37,13 @@ export class PopupWithImage extends Popup {
     super(popupSelector);
     this._name = data.name;
     this._link = data.link;
-
-    this._popupImage = this._popup.querySelector(".modal__image");
-    this._popupHeader = this._popup.querySelector(".modal__header");
   }
 
   open() {
     super.open();
-    this._popupImage.src = this._link;
-    this._popupImage.alt = `A full size view of ${this._name}`;
-    this._popupHeader.textContent = this._name;
+    popupImage.src = this._link;
+    popupImage.alt = `A full size view of ${this._name}`;
+    popupHeader.textContent = this._name;
   }
 }
 
