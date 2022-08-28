@@ -40,22 +40,26 @@ const CardSection = new Section({
 
 CardSection.renderItems();
 
-const addForm = new PopupWithForm(".card-form", () => {
+const addForm = new PopupWithForm(".card-modal", () => {
   const newCard = { name: cardNameInput.value, link: cardImageInput.value };
   const handleCardPopup = imagePopup.open(newCard);
   const newCardEl = new Card(newCard, "#card", handleCardPopup);
   CardSection.addItem(newCardEl.generateCard());
 });
 
+addForm.setEventListeners();
+
 addCardButton.addEventListener("click", () => addForm.open());
 
 const addFormValidator = new FormValidator(config, ".card-form");
 addFormValidator.enableValidation();
 
-const profileForm = new PopupWithForm(".profile-form", () => {
+const profileForm = new PopupWithForm(".profile-modal", () => {
   profileName.textContent = profileNameInput.value;
   profileDesc.textContent = profileDescInput.value;
 });
+
+profileForm.setEventListeners();
 
 editProfileButton.addEventListener("click", () => profileForm.open());
 
