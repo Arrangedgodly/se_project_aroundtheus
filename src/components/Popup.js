@@ -23,15 +23,15 @@ export class Popup {
   }
 
   _closeModalOnRemoteClick(evt) {
-  const openedModal = document.querySelector(".modal_opened");
-  if (openedModal === null) {return;}
-  if (evt.target === openedModal) {
-    this.close();
-  };
+    const openedModal = document.querySelector(".modal_opened");
+    if (openedModal === null) {return;}
+    if (evt.target === openedModal) {
+      this.close();
+    };
   }
 
   setEventListeners() {
     this._closeButton.addEventListener("click", () => this.close());
-    this._popup.addEventListener("mousedown", () => this._closeModalOnRemoteClick());
+    this._popup.addEventListener("mousedown", (evt) => this._closeModalOnRemoteClick(evt));
   }
 }
