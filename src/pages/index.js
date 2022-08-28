@@ -1,10 +1,10 @@
 import "./index.css";
-import { Card } from '../components/Card.js';
-import { FormValidator } from '../components/FormValidator.js';
-import { openModal, closeModal } from '../utils/utils.js';
+import { Card } from '../components/Card';
+import { FormValidator } from '../components/FormValidator';
+import { openModal, closeModal } from '../utils/utils';
 import { PopupWithImage } from "../components/PopupWithImage";
 import { PopupWithForm } from "../components/PopupWithForm";
-import { UserInfo } from "../components/UserInfo.js";
+import { UserInfo } from "../components/UserInfo";
 import { Section } from "../components/Section";
 import { 
   initialCards,
@@ -29,19 +29,35 @@ import {
 const imagePopup = new PopupWithImage('.image-modal');
 imagePopup.setEventListeners();
 
-const addFormValidator = new FormValidator(config, ".card-form");
-addFormValidator.enableValidation();
-const editFormValidator = new FormValidator(config, ".profile-form");
-editFormValidator.enableValidation();
-
 const CardSection = new Section({
   items: initialCards,
   renderer: (item) => {
-    const cardEl = new Card(item, "#card", imagePopup.open(item) );
+    const handleCardPopup = imagePopup.open(item);
+    const cardEl = new Card(item, "#card", handleCardPopup );
     CardSection.addItem(cardEl.generateCard());
   }
 }, ".cards");
 
 CardSection.renderItems();
 
+const addForm = new PopupWithForm(".card-form", () => {
+  const newCard = { name: cardNameInput.value, link: cardImageInput.value };
+  const handleCardPopup = imagePopup.open(newCard);
+  const newCardEl = new Card(newCard, "#card", handleCardPopup);
+  CardSection.addItem(newCardEl.generateCard());
+});
 
+addCardButton.addEventListener("click", () => addForm.open());
+
+const addFormValidator = new FormValidator(config, ".card-form");
+addFormValidator.enableValidation();
+
+const profileForm = new PopupWithForm(".profile-form", () => {
+  profileName.textContent = profileNameInput.value;
+  profileDesc.textContent = profileDescInput.value;
+});
+
+editProfileButton.addEventListener("click", () => profileForm.open());
+
+const editFormValidator = new FormValidator(config, ".profile-form");
+editFormValidator.enableValidation();

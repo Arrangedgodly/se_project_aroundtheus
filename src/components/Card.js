@@ -1,11 +1,11 @@
 export class Card {
-  constructor(data, cardSelector, handleCardPopup) {
+  constructor(data, cardSelector, func) {
     this._data = data;
     this._title = data.name;
     this._link = data.link;
 
     this._cardSelector = cardSelector;
-    this._handleCardPopup = handleCardPopup;
+    this._handleCardPopup = func;
   }
 
   _getTemplate = () => {
@@ -41,17 +41,13 @@ export class Card {
     this._element = null;
   };
 
-  _handleCardPopup = () => {
-    this._handleCardPopup;
-  }
-
   _setEventListeners() {
     this._cardTrashButton.addEventListener("click", () =>
       this._handleTrashButton()
     );
 
     this._cardImageButton.addEventListener("click", () =>
-      this._handleCardPopup()
+      this._handleCardPopup
     );
 
     this._cardLikeButton.addEventListener("click", () =>
