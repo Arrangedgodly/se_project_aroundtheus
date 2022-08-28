@@ -12,7 +12,6 @@ import {
   profileModal,
   addCardButton,
   cardModal,
-  closeButtons,
   profileName,
   profileDesc,
   profileNameInput,
