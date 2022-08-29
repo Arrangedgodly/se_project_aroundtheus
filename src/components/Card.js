@@ -1,11 +1,11 @@
 export class Card {
-  constructor(data, cardSelector, func) {
+  constructor(data, cardSelector, handleCardPopup) {
     this._data = data;
     this._title = data.name;
     this._link = data.link;
 
     this._cardSelector = cardSelector;
-    this._handleCardPopup = func;
+    this._handleCardPopup = handleCardPopup;
   }
 
   _getTemplate = () => {
@@ -47,7 +47,7 @@ export class Card {
     );
 
     this._cardImageButton.addEventListener("click", () =>
-      this._handleCardPopup
+      this._handleCardPopup()
     );
 
     this._cardLikeButton.addEventListener("click", () =>

@@ -13,4 +13,8 @@ export class Section {
   addItem(element) {
     this._section.append(element);
   }
+
+  addNewItem(element) {
+    this._section.prepend(element);
+  }
 }

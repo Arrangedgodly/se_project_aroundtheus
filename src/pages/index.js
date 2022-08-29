@@ -31,8 +31,8 @@ imagePopup.setEventListeners();
 const CardSection = new Section({
   items: initialCards,
   renderer: (item) => {
-    const handleCardPopup = imagePopup.open(item);
-    const cardEl = new Card(item, "#card", handleCardPopup );
+    const handleCardPopup = () => {imagePopup.open(item)};
+    const cardEl = new Card(item, "#card", handleCardPopup() );
     CardSection.addItem(cardEl.generateCard());
   }
 }, ".cards");
@@ -41,9 +41,10 @@ CardSection.renderItems();
 
 const addForm = new PopupWithForm(".card-modal", () => {
   const newCard = { name: cardNameInput.value, link: cardImageInput.value };
-  const handleCardPopup = imagePopup.open(newCard);
-  const newCardEl = new Card(newCard, "#card", handleCardPopup);
-  CardSection.addItem(newCardEl.generateCard());
+  const handleCardPopup = () => {imagePopup.open(newCard);}
+  const newCardEl = new Card(newCard, "#card", handleCardPopup());
+  CardSection.addNewItem(newCardEl.generateCard());
+  addForm.close();
 });
 
 addForm.setEventListeners();
@@ -56,6 +57,7 @@ addFormValidator.enableValidation();
 const profileForm = new PopupWithForm(".profile-modal", () => {
   profileName.textContent = profileNameInput.value;
   profileDesc.textContent = profileDescInput.value;
+  profileForm.close();
 });
 
 profileForm.setEventListeners();
