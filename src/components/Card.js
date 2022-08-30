@@ -1,5 +1,5 @@
 export class Card {
-  constructor(data, cardSelector, handleCardPopup) {
+  constructor({data, handleCardPopup}, cardSelector) {
     this._data = data;
     this._title = data.name;
     this._link = data.link;
@@ -47,7 +47,7 @@ export class Card {
     );
 
     this._cardImageButton.addEventListener("click", () =>
-      this._handleCardPopup()
+      this._handleCardPopup({name: this._title, link: this._link})
     );
 
     this._cardLikeButton.addEventListener("click", () =>

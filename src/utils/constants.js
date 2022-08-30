@@ -57,6 +57,15 @@ const config = {
 
 const escapeKeyCode = 27;
 
+const selectors = {
+  cardPopup: ".card-modal",
+  imagePopup: ".image-modal",
+  profilePopup: ".profile-modal",
+  cardForm: ".card-form",
+  profileForm: ".profile-form",
+  cardTemplate: "#card"
+}
+
 export { 
   initialCards,
   editProfileButton,
@@ -76,5 +85,6 @@ export {
   popupHeader,
   popupImage,
   config,
-  escapeKeyCode
+  escapeKeyCode,
+  selectors
  };
