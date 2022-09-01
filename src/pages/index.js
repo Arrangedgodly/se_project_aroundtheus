@@ -32,6 +32,13 @@ const createCard = (cardObject) => {
   return card.generateCard();
 }
 
+function fillProfileForm() {
+  const { userName,  userJob } = userInfo.getUserInfo();
+
+  profileNameInput.value = userName; 
+  profileDescInput.value = userJob; 
+}
+
 const imagePopup = new PopupWithImage(selectors.imagePopup);
 imagePopup.setEventListeners();
 
@@ -54,7 +61,10 @@ const addForm = new PopupWithForm(selectors.cardPopup, (data) => {
 
 addForm.setEventListeners();
 
-addCardButton.addEventListener("click", () => addForm.open());
+addCardButton.addEventListener("click", () => {
+  addFormValidator.toggleButtonState();
+  addForm.open();
+});
 
 const addFormValidator = new FormValidator(config, selectors.cardForm);
 addFormValidator.enableValidation();
@@ -62,16 +72,17 @@ addFormValidator.enableValidation();
 const userInfo = new UserInfo(selectors);
 
 const profileForm = new PopupWithForm(selectors.profilePopup, (data) => {
-  profileName.textContent = data.profile;
-  profileDesc.textContent = data.desc;
+  userInfo.setUserInfo({
+    userName: data.profile,
+    userJob: data.desc
+  });
   profileForm.close();
 });
 
 profileForm.setEventListeners();
 
 editProfileButton.addEventListener("click", () => {
-  const { userName, userJob } = userInfo.getUserInfo();
-  userInfo.setUserInfo({ userName, userJob });
+  fillProfileForm();
   profileForm.open();
 });
 

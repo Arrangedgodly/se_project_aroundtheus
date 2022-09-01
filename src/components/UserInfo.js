@@ -1,5 +1,3 @@
-import { profileNameInput, profileDescInput } from "../utils/constants";
-
 export class UserInfo {
   constructor({ userNameSelector, userJobSelector }) {
     this._nameElement = document.querySelector(userNameSelector);
@@ -13,7 +11,7 @@ export class UserInfo {
   }
 
   setUserInfo({userName, userJob}) {
-    profileNameInput.value = userName;
-    profileDescInput.value = userJob;
+    this._nameElement.textContent = userName;
+    this._jobElement.textContent = userJob;
   }
 }
