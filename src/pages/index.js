@@ -9,12 +9,8 @@ import {
   initialCards,
   editProfileButton,
   addCardButton,
-  profileName,
-  profileDesc,
   profileNameInput,
   profileDescInput,
-  cardImageInput,
-  cardNameInput,
   config,
   selectors
  } from "../utils/constants.js";
