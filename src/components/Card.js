@@ -42,16 +42,12 @@ export class Card {
   };
 
   _setEventListeners() {
-    this._cardTrashButton.addEventListener("click", () =>
-      this._handleTrashButton()
-    );
+    this._cardTrashButton.addEventListener("click", this._handleTrashButton);
 
     this._cardImageButton.addEventListener("click", () =>
       this._handleCardPopup({name: this._title, link: this._link})
     );
 
-    this._cardLikeButton.addEventListener("click", () =>
-      this._handleLikeIcon()
-    );
+    this._cardLikeButton.addEventListener("click", this._handleLikeIcon);
   }
 }

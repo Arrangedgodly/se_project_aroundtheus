@@ -19,40 +19,36 @@ import {
   selectors
  } from "../utils/constants.js";
 
+const createCard = (cardObject) => {
+  const card = new Card(
+    {
+      data: cardObject,
+      handleCardPopup: (imgData) => {
+        imagePopup.open(imgData)
+      }
+    },
+    selectors.cardTemplate
+  );
+  return card.generateCard();
+}
 
 const imagePopup = new PopupWithImage(selectors.imagePopup);
 imagePopup.setEventListeners();
 
-const CardSection = new Section({
+const cardSection = new Section({
   items: initialCards,
   renderer: (data) => {
-    const cardEl = new Card(
-      {
-        data,
-        handleCardPopup: (imgData) => {
-          imagePopup.open(imgData)
-        }
-      }, 
-      selectors.cardTemplate
-      );
-    CardSection.addItem(cardEl.generateCard());
+    const cardEl = createCard(data);
+    cardSection.addItem(cardEl);
   }
 }, ".cards");
 
-CardSection.renderItems();
+cardSection.renderItems();
 
-const addForm = new PopupWithForm(selectors.cardPopup, () => {
-  const newCard = { name: cardNameInput.value, link: cardImageInput.value };
-  const newCardEl = new Card(
-    {
-      data: newCard,
-      handleCardPopup: (imgData) => {
-        imagePopup.open(imgData)
-      }
-    }, 
-    selectors.cardTemplate
-    );
-  CardSection.addNewItem(newCardEl.generateCard());
+const addForm = new PopupWithForm(selectors.cardPopup, (data) => {
+  const newCard = { name: data.place, link: data.link };
+  const newCardEl = createCard(newCard);
+  cardSection.addNewItem(newCardEl);
   addForm.close();
 });
 
@@ -63,15 +59,21 @@ addCardButton.addEventListener("click", () => addForm.open());
 const addFormValidator = new FormValidator(config, selectors.cardForm);
 addFormValidator.enableValidation();
 
-const profileForm = new PopupWithForm(selectors.profilePopup, () => {
-  profileName.textContent = profileNameInput.value;
-  profileDesc.textContent = profileDescInput.value;
+const userInfo = new UserInfo(selectors);
+
+const profileForm = new PopupWithForm(selectors.profilePopup, (data) => {
+  profileName.textContent = data.profile;
+  profileDesc.textContent = data.desc;
   profileForm.close();
 });
 
 profileForm.setEventListeners();
 
-editProfileButton.addEventListener("click", () => profileForm.open());
+editProfileButton.addEventListener("click", () => {
+  const { userName, userJob } = userInfo.getUserInfo();
+  userInfo.setUserInfo({ userName, userJob });
+  profileForm.open();
+});
 
 const editFormValidator = new FormValidator(config, selectors.profileForm);
 editFormValidator.enableValidation();

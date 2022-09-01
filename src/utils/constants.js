@@ -63,7 +63,9 @@ const selectors = {
   profilePopup: ".profile-modal",
   cardForm: ".card-form",
   profileForm: ".profile-form",
-  cardTemplate: "#card"
+  cardTemplate: "#card",
+  userNameSelector: ".profile__name",
+  userJobSelector: ".profile__desc"
 }
 
 export { 
