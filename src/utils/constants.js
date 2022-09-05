@@ -68,6 +68,15 @@ const selectors = {
   userJobSelector: ".profile__desc"
 }
 
+const promiseInformation = {
+  baseUrl: "https://around.nomoreparties.co/v1/group-12/",
+  headers: {
+    authorization: "fa002eaa-cfdc-49b2-ba7a-7640eb468742",
+    "content-type": "application/json"
+}
+}
+
+
 export { 
   initialCards,
   editProfileButton,
@@ -88,5 +97,6 @@ export {
   popupImage,
   config,
   escapeKeyCode,
-  selectors
+  selectors,
+  promiseInformation
  };
