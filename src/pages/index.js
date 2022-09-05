@@ -5,15 +5,19 @@ import { PopupWithImage } from "../components/PopupWithImage";
 import { PopupWithForm } from "../components/PopupWithForm";
 import { UserInfo } from "../components/UserInfo";
 import { Section } from "../components/Section";
+import { Api } from "../components/Api";
 import { 
-  initialCards,
   editProfileButton,
   addCardButton,
   profileNameInput,
   profileDescInput,
   config,
-  selectors
+  selectors,
+  promiseInformation
  } from "../utils/constants.js";
+
+const api = new Api(promiseInformation);
+const initialCards = api.getInitialCards();
 
 const createCard = (cardObject) => {
   const card = new Card(
