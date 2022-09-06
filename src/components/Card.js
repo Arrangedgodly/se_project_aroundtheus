@@ -1,13 +1,16 @@
 export class Card {
-  constructor({data, handleCardPopup}, cardSelector) {
+  constructor({data, handleCardPopup, handleCardLike, handleCardUnlike}, cardSelector) {
     this._data = data;
     this._title = data.name;
     this._link = data.link;
     this._likes = data.likes;
     this._id = data._id;
+    this._isLiked = false;
 
     this._cardSelector = cardSelector;
     this._handleCardPopup = handleCardPopup;
+    this._handleCardLike = handleCardLike;
+    this._handleCardUnlike = handleCardUnlike;
   }
 
   _getTemplate = () => {
@@ -39,6 +42,12 @@ export class Card {
 
   _handleLikeIcon = () => {
     this._cardLikeButton.classList.toggle("button_type_like_filled");
+    this._isLiked = !this._isLiked;
+    if (this._isLiked) {
+      this._handleCardLike(this._id);
+    } else {
+      this._handleCardUnlike(this._id);
+    }
   };
 
   _handleTrashButton = () => {

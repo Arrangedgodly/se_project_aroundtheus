@@ -24,6 +24,12 @@ const createCard = (cardObject) => {
       handleCardPopup: (imgData) => {
         imagePopup.open(imgData);
       },
+      handleCardLike: (id) => {
+        api.addCardLike(id);
+      },
+      handleCardUnlike: (id) => {
+        api.removeCardLike(id);
+      },
     },
     selectors.cardTemplate
   );
