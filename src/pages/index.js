@@ -34,15 +34,23 @@ const changeProfileImage = (img) => {
   profileImage.src = img;
 }
 
+const userInfo = new UserInfo(selectors);
+
 const api = new Api(promiseInformation);
 
-api.getUserData().then(res => {
-  userInfo.setUserInfo({
-    userName: res.name,
-    userJob: res.about,
-  });
-  changeProfileImage(res.avatar);
-});
+function updateUserData() {
+  setTimeout(500, () => {
+    api.getUserData().then(res => {
+      userInfo.setUserInfo({
+        userName: res.name,
+        userJob: res.about,
+      });
+      changeProfileImage(res.avatar);
+    });
+  })
+}
+
+updateUserData();
 
 api.getInitialCards().then((cards) => {
   const cardSection = new Section(
@@ -59,10 +67,6 @@ api.getInitialCards().then((cards) => {
   cardSection.renderItems();
 });
 
-api.submitUserEdit();
-
-api.postNewCard().then(res => console.log(res));
-
 function fillProfileForm() {
   const { userName, userJob } = userInfo.getUserInfo();
 
@@ -75,8 +79,7 @@ imagePopup.setEventListeners();
 
 const addForm = new PopupWithForm(selectors.cardPopup, (data) => {
   const newCard = { name: data.place, link: data.link };
-  const newCardEl = createCard(newCard);
-  cardSection.addNewItem(newCardEl);
+  api.postNewCard(newCard);
   addForm.close();
 });
 
@@ -90,13 +93,10 @@ addCardButton.addEventListener("click", () => {
 const addFormValidator = new FormValidator(config, selectors.cardForm);
 addFormValidator.enableValidation();
 
-const userInfo = new UserInfo(selectors);
-
 const profileForm = new PopupWithForm(selectors.profilePopup, (data) => {
-  userInfo.setUserInfo({
-    userName: data.profile,
-    userJob: data.desc,
-  });
+  const newUser = {name: data.profile, about: data.desc};
+  api.submitUserEdit(newUser);
+  updateUserData();
   profileForm.close();
 });
 
