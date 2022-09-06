@@ -34,6 +34,7 @@ const cardModal = document.querySelector(".card-modal");
 const profileForm = profileModal.querySelector(".form");
 const profileName = document.querySelector(".profile__name");
 const profileDesc = document.querySelector(".profile__desc");
+const profileImage = document.querySelector(".profile__image");
 const profileNameInput = profileForm.querySelector(".form__input_type_name");
 const profileDescInput = profileForm.querySelector(".form__input_type_desc");
 
@@ -86,6 +87,7 @@ export {
   profileForm,
   profileName,
   profileDesc,
+  profileImage,
   profileNameInput,
   profileDescInput,
   cardForm,

@@ -3,6 +3,7 @@ export class Card {
     this._data = data;
     this._title = data.name;
     this._link = data.link;
+    this._likes = data.likes;
 
     this._cardSelector = cardSelector;
     this._handleCardPopup = handleCardPopup;
@@ -20,12 +21,14 @@ export class Card {
     const cardTitle = this._element.querySelector(".card__footer-title");
     const cardImage = this._element.querySelector(".card__image");
     this._cardLikeButton = this._element.querySelector(".button_type_like");
+    this._cardLikesCount = this._element.querySelector(".card__footer-likes");
     this._cardTrashButton = this._element.querySelector(".button_type_trash");
     this._cardImageButton = this._element.querySelector(".button_type_image");
 
     cardTitle.textContent = this._title;
     cardImage.src = this._link;
     cardImage.alt = `A Scenic Photo of ${this._title}`;
+    this._cardLikesCount.textContent = `${this._likes.length}`;
 
     this._setEventListeners();
 

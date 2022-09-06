@@ -1,59 +1,77 @@
 import "./index.css";
-import { Card } from '../components/Card';
-import { FormValidator } from '../components/FormValidator';
+import { Card } from "../components/Card";
+import { FormValidator } from "../components/FormValidator";
 import { PopupWithImage } from "../components/PopupWithImage";
 import { PopupWithForm } from "../components/PopupWithForm";
 import { UserInfo } from "../components/UserInfo";
 import { Section } from "../components/Section";
 import { Api } from "../components/Api";
-import { 
+import {
   editProfileButton,
   addCardButton,
+  profileImage,
   profileNameInput,
   profileDescInput,
   config,
   selectors,
-  promiseInformation
- } from "../utils/constants.js";
-
-const api = new Api(promiseInformation);
-const initialCardsPromise = api.getInitialCards();
-const initialCards = initialCardsPromise.then(res => Array.from(res));
-console.log(initialCardsPromise);
-console.log(initialCards);
+  promiseInformation,
+} from "../utils/constants.js";
 
 const createCard = (cardObject) => {
   const card = new Card(
     {
       data: cardObject,
       handleCardPopup: (imgData) => {
-        imagePopup.open(imgData)
-      }
+        imagePopup.open(imgData);
+      },
     },
     selectors.cardTemplate
   );
   return card.generateCard();
+};
+
+const changeProfileImage = (img) => {
+  profileImage.src = img;
 }
 
-function fillProfileForm() {
-  const { userName,  userJob } = userInfo.getUserInfo();
+const api = new Api(promiseInformation);
 
-  profileNameInput.value = userName; 
-  profileDescInput.value = userJob; 
+api.getUserData().then(res => {
+  userInfo.setUserInfo({
+    userName: res.name,
+    userJob: res.about,
+  });
+  changeProfileImage(res.avatar);
+});
+
+api.getInitialCards().then((cards) => {
+  const cardSection = new Section(
+    {
+      items: cards,
+      renderer: (data) => {
+        const cardEl = createCard(data);
+        cardSection.addItem(cardEl);
+      },
+    },
+    ".cards"
+  );
+
+  cardSection.renderItems();
+});
+
+api.submitUserEdit();
+
+api.postNewCard().then(res => console.log(res));
+
+function fillProfileForm() {
+  const { userName, userJob } = userInfo.getUserInfo();
+
+  profileNameInput.value = userName;
+  profileDescInput.value = userJob;
 }
 
 const imagePopup = new PopupWithImage(selectors.imagePopup);
 imagePopup.setEventListeners();
-
-const cardSection = new Section({
-  items: initialCards,
-  renderer: (data) => {
-    const cardEl = createCard(data);
-    cardSection.addItem(cardEl);
-  }
-}, ".cards");
-
-cardSection.renderItems();
 
 const addForm = new PopupWithForm(selectors.cardPopup, (data) => {
   const newCard = { name: data.place, link: data.link };
@@ -77,7 +95,7 @@ const userInfo = new UserInfo(selectors);
 const profileForm = new PopupWithForm(selectors.profilePopup, (data) => {
   userInfo.setUserInfo({
     userName: data.profile,
-    userJob: data.desc
+    userJob: data.desc,
   });
   profileForm.close();
 });

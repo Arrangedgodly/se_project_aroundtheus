@@ -25,6 +25,13 @@
   margin-top: -4px;
 }
 
+.card__likes-wrapper {
+  display: flex;
+  flex-direction: column;
+  max-height: 35px;
+  margin: 22px 22px 24px 0;
+}
+
 .card__footer-title {
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -34,6 +41,11 @@
   font-size: 24px;
   line-height: 29px;
   max-width: 219px;
+}
+
+.card__footer-likes {
+  font-size: 13px;
+  margin: 3px auto 0 auto;
 }
 
 @media screen and (max-width: 683px) {

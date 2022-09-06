@@ -44,8 +44,9 @@
   background-image: url("../images/heart-icon.svg");
   min-width: 21px;
   min-height: 18px;
-  margin: 31px 30px 30px 28px;
+  margin: 0 auto;
   transition: background-image 0.5s ease-in-out;
+  position: relative;
 }
 
 .button_type_like:hover {
