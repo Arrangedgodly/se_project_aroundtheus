@@ -43,4 +43,18 @@ export class Api {
             })
         })
     }
+
+    addCardLike(id) {
+        return fetch(`${this.url}cards/${id}`, {
+            method: "PUT",
+            headers: this.headers
+        })
+    }
+
+    removeCardLike(id) {
+        return fetch(`${this.url}cards/${id}`, {
+            method: "DELETE",
+            headers: this.headers
+        })
+    }
 }

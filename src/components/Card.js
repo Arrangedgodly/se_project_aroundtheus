@@ -4,6 +4,7 @@ export class Card {
     this._title = data.name;
     this._link = data.link;
     this._likes = data.likes;
+    this._id = data._id;
 
     this._cardSelector = cardSelector;
     this._handleCardPopup = handleCardPopup;
@@ -18,6 +19,7 @@ export class Card {
 
   generateCard = () => {
     this._element = this._getTemplate();
+    this._element.setAttribute("id", this._id);
     const cardTitle = this._element.querySelector(".card__footer-title");
     const cardImage = this._element.querySelector(".card__image");
     this._cardLikeButton = this._element.querySelector(".button_type_like");
