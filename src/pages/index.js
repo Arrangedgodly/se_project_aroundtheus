@@ -17,7 +17,10 @@ import {
  } from "../utils/constants.js";
 
 const api = new Api(promiseInformation);
-const initialCards = api.getInitialCards();
+const initialCardsPromise = api.getInitialCards();
+const initialCards = initialCardsPromise.then(res => Array.from(res));
+console.log(initialCardsPromise);
+console.log(initialCards);
 
 const createCard = (cardObject) => {
   const card = new Card(
