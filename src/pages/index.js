@@ -39,7 +39,7 @@ const userInfo = new UserInfo(selectors);
 const api = new Api(promiseInformation);
 
 function updateUserData() {
-  setTimeout(500, () => {
+  setTimeout(() => {
     api.getUserData().then(res => {
       userInfo.setUserInfo({
         userName: res.name,
@@ -47,7 +47,7 @@ function updateUserData() {
       });
       changeProfileImage(res.avatar);
     });
-  })
+  }, 1000)
 }
 
 updateUserData();
@@ -79,7 +79,7 @@ imagePopup.setEventListeners();
 
 const addForm = new PopupWithForm(selectors.cardPopup, (data) => {
   const newCard = { name: data.place, link: data.link };
-  api.postNewCard(newCard);
+  setTimeout(() => {api.postNewCard(newCard)}, 1000);
   addForm.close();
 });
 
