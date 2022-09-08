@@ -123,7 +123,6 @@ editProfileButton.addEventListener("click", () => {
 const editFormValidator = new FormValidator(config, selectors.profileForm);
 editFormValidator.enableValidation();
 
-
 const deletePopup = new PopupWithForm(selectors.deletePopup, (id) => {
   api.deleteCard(id);
   deletePopup.close();
