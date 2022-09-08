@@ -33,20 +33,26 @@ export class Card {
     cardTitle.textContent = this._title;
     cardImage.src = this._link;
     cardImage.alt = `A Scenic Photo of ${this._title}`;
-    this._cardLikesCount.textContent = `${this._likes.length}`;
+    this._updateLikeCount();
 
     this._setEventListeners();
 
     return this._element;
   };
 
+  _updateLikeCount = () => {
+    this._cardLikesCount.textContent = `${this._likes.length}`;
+  }
+
   _handleLikeIcon = () => {
     this._cardLikeButton.classList.toggle("button_type_like_filled");
     this._isLiked = !this._isLiked;
     if (this._isLiked) {
       this._handleCardLike(this._id);
+      this._updateLikeCount();
     } else {
       this._handleCardUnlike(this._id);
+      this._updateLikeCount();
     }
   };
 

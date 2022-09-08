@@ -44,6 +44,14 @@
   z-index: 2;
 }
 
+.modal__container-delete {
+  height: 181px;
+}
+
+.modal__container-profile-pic {
+  height: 272px;
+}
+
 .modal__image {
   max-width: 75vw;
   max-height: 75vh;

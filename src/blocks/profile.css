@@ -8,6 +8,21 @@
   max-width: 880px;
 }
 
+.profile__image-wrapper {
+  margin: 0;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.profile__image-wrapper:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: background-color 0.3s ease-in-out;
+}
+
 .profile__image {
   border-radius: 50%;
   width: 120px;
@@ -57,17 +72,17 @@
   .profile {
     margin: 0 auto 5% auto;
     width: 85%;
-    }
-  
-    .profile__name {
-      font-size: 28px;
-      max-width: 230px;
-    }
-  
-    .profile__desc {
-      font-size: 16px;
-      max-width: 270px;
-    }
+  }
+
+  .profile__name {
+    font-size: 28px;
+    max-width: 230px;
+  }
+
+  .profile__desc {
+    font-size: 16px;
+    max-width: 270px;
+  }
 }
 
 @media screen and (max-width: 683px) {

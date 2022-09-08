@@ -26,6 +26,7 @@ const initialCards = [
 ];
 
 const editProfileButton = document.querySelector(".button_type_edit");
+const editProfilePicButton = document.querySelector(".button_type_edit-alt");
 const profileModal = document.querySelector(".profile-modal");
 
 const addCardButton = document.querySelector(".button_type_add");
@@ -62,6 +63,8 @@ const selectors = {
   cardPopup: ".card-modal",
   imagePopup: ".image-modal",
   profilePopup: ".profile-modal",
+  profilePicPopup: ".profile-pic-modal",  
+  deletePopup: ".delete-modal",
   cardForm: ".card-form",
   profileForm: ".profile-form",
   cardTemplate: "#card",
@@ -81,6 +84,7 @@ const promiseInformation = {
 export { 
   initialCards,
   editProfileButton,
+  editProfilePicButton,
   profileModal,
   addCardButton,
   cardModal,

@@ -54,6 +54,28 @@
               <button class="button button_type_close"></button>
             </div>
           </div>
+          <div class="modal profile-pic-modal">
+            <div class="modal__container modal__container-profile-pic">
+              <form class="form profile-form" name="profileForm" novalidate>
+                <h4 class="form__header">Change Profile Picture</h4>
+                <fieldset class="form__set">
+                  <input
+                    class="form__input form__input_type_name"
+                    type="url"
+                    id="profile-pic-input"
+                    name="profile-pic"
+                    placeholder="URL"
+                    minlength="2"
+                    maxlength="40"
+                    required
+                  />
+                  <span class="form__input-error" id="profile-pic-input-error"></span> 
+                <button type="submit" class="form__submit">Save</button>
+                </fieldset>
+              </form>
+              <button class="button button_type_close"></button>
+            </div>
+          </div>
           <div class="modal card-modal">
             <div class="modal__container">
               <form class="form card-form" name="cardForm" novalidate>
@@ -96,12 +118,24 @@
               <button class="button button_type_close"></button>
             </div>
           </div>
+          <div class="modal delete-modal">
+            <div class="modal__container modal__container-delete">
+              <form class="form delete-form" name="deleteForm" novalidate>
+                <h4 class="form__header">Are You Sure?</h4>
+                <button type="submit" class="form__submit">Yes</button>
+              </form>
+              <button class="button button_type_close"></button>
+            </div>
+          </div>
         <section class="profile">
+          <div class="profile__image-wrapper">
           <img
             class="profile__image"
             src="<%=require('./images/person.jpg')%>"
             alt="profile image"
           />
+          <button type="button" class="button button_type_edit-alt"></button>
+          </div>
           <div class="profile__info">
             <div class="profile__name-wrapper">
               <h1 class="profile__name">Jacques Cousteau</h1>
