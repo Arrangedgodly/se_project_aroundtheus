@@ -5,6 +5,7 @@ export class Card {
     this._link = data.link;
     this._likes = data.likes;
     this._id = data._id;
+    this._ownerid = data.owner._id;
     this._isLiked = false;
 
     this._cardSelector = cardSelector;
@@ -60,6 +61,15 @@ export class Card {
     this._element.remove();
     this._element = null;
   };
+
+  checkCardOwnerId = (id) => {
+    if (id !== this._ownerid) {
+      this._cardTrashButton.remove();
+      this._cardTrashButton = null;
+    } else {
+      return;
+    }
+  }
 
   _setEventListeners() {
     this._cardTrashButton.addEventListener("click", this._handleTrashButton);

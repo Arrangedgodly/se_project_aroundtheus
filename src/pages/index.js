@@ -7,6 +7,7 @@ import { UserInfo } from "../components/UserInfo";
 import { Section } from "../components/Section";
 import { Api } from "../components/Api";
 import {
+  profile,
   editProfileButton,
   editProfilePicButton,
   addCardButton,
@@ -57,6 +58,7 @@ function updateUserData() {
         userJob: res.about,
       });
       changeProfileImage(res.avatar);
+      profile.setAttribute("id", res._id);
     });
   }, 1000);
 }

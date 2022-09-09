@@ -32,6 +32,7 @@ const profileModal = document.querySelector(".profile-modal");
 const addCardButton = document.querySelector(".button_type_add");
 const cardModal = document.querySelector(".card-modal");
 
+const profile = document.querySelector(".profile");
 const profileForm = profileModal.querySelector(".form");
 const profileName = document.querySelector(".profile__name");
 const profileDesc = document.querySelector(".profile__desc");
@@ -88,6 +89,7 @@ export {
   profileModal,
   addCardButton,
   cardModal,
+  profile,
   profileForm,
   profileName,
   profileDesc,
