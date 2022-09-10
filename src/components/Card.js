@@ -1,17 +1,26 @@
 export class Card {
-  constructor({data, handleCardPopup, handleCardLike, handleCardUnlike}, cardSelector) {
+  constructor({data, handleCardPopup, handleCardLike, handleCardUnlike, handleTrashPopup}, cardSelector, userId) {
     this._data = data;
+    console.log(this._data);
     this._title = data.name;
     this._link = data.link;
     this._likes = data.likes;
     this._id = data._id;
+    this._userId = userId;
     this._ownerid = data.owner._id;
     this._isLiked = false;
+
+    if (this._likes.includes(this._userId)) {
+      this._isLiked = true;
+    } else {
+      this._isLiked = false;
+    }
 
     this._cardSelector = cardSelector;
     this._handleCardPopup = handleCardPopup;
     this._handleCardLike = handleCardLike;
     this._handleCardUnlike = handleCardUnlike;
+    this._handleTrashPopup = handleTrashPopup;
   }
 
   _getTemplate = () => {
@@ -57,13 +66,18 @@ export class Card {
     }
   };
 
-  _handleTrashButton = () => {
-    this._element.remove();
-    this._element = null;
-  };
+  _checkLikeIcon = () => {
+    for (let i = 0; i < this._likes.length; i++) {
+      if (this._likes[i]._id === this._userId) {
+        this._isLiked = true;
+        this._cardLikeButton.classList.toggle("button_type_like_filled");
+        return;
+      }
+    }
+  }
 
-  checkCardOwnerId = (id) => {
-    if (id !== this._ownerid) {
+  checkCardOwnerId = () => {
+    if (this._userId !== this._ownerid) {
       this._cardTrashButton.remove();
       this._cardTrashButton = null;
     } else {
@@ -72,12 +86,17 @@ export class Card {
   }
 
   _setEventListeners() {
-    this._cardTrashButton.addEventListener("click", this._handleTrashButton);
+    this._cardTrashButton.addEventListener("click", () => {
+      this._handleTrashPopup(this._id)
+    });
 
     this._cardImageButton.addEventListener("click", () =>
       this._handleCardPopup({name: this._title, link: this._link})
     );
 
     this._cardLikeButton.addEventListener("click", this._handleLikeIcon);
+
+    this.checkCardOwnerId();
+    this._checkLikeIcon();
   }
 }

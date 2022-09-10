@@ -17,6 +17,7 @@ import {
   config,
   selectors,
   promiseInformation,
+  deleteInput
 } from "../utils/constants.js";
 
 const createCard = (cardObject) => {
@@ -36,8 +37,12 @@ const createCard = (cardObject) => {
           api.removeCardLike(id);
         }, 500);
       },
+      handleTrashPopup: (id) => {
+        fillDeletePopup(id);
+      }
     },
-    selectors.cardTemplate
+    selectors.cardTemplate,
+    profile.id
   );
   return card.generateCard();
 };
@@ -66,7 +71,7 @@ function updateUserData() {
 updateUserData();
 
 api.getInitialCards().then((cards) => {
-  const cardSection = new Section(
+  setTimeout(() => {const cardSection = new Section(
     {
       items: cards,
       renderer: (data) => {
@@ -77,7 +82,7 @@ api.getInitialCards().then((cards) => {
     ".cards"
   );
 
-  cardSection.renderItems();
+  cardSection.renderItems()}, 1500)
 });
 
 function fillProfileForm() {
@@ -87,14 +92,17 @@ function fillProfileForm() {
   profileDescInput.value = userJob;
 }
 
+function fillDeletePopup(data) {
+  deleteInput.value = data;
+  deletePopup.open();
+}
+
 const imagePopup = new PopupWithImage(selectors.imagePopup);
 imagePopup.setEventListeners();
 
 const addForm = new PopupWithForm(selectors.cardPopup, (data) => {
   const newCard = { name: data.place, link: data.link };
-  api
-    .postNewCard(newCard)
-    .then((res) => console.log(res));
+  api.postNewCard(newCard).then((res) => console.log(res));
   addForm.close();
 });
 
@@ -125,15 +133,15 @@ editProfileButton.addEventListener("click", () => {
 const editFormValidator = new FormValidator(config, selectors.profileForm);
 editFormValidator.enableValidation();
 
-const deletePopup = new PopupWithForm(selectors.deletePopup, (id) => {
-  api.deleteCard(id);
+const deletePopup = new PopupWithForm(selectors.deletePopup, (data) => {
+  api.deleteCard(data.cardId);
   deletePopup.close();
 });
 
 deletePopup.setEventListeners();
 
 const profilePicForm = new PopupWithForm(selectors.profilePicPopup, (data) => {
-  api.updateProfilePicture(data.profile-pic);
+  api.updateProfilePicture(data.profilepic);
   profilePicForm.close();
 });
 

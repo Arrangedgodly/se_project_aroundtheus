@@ -62,14 +62,14 @@
                   <input
                     class="form__input form__input_type_name"
                     type="url"
-                    id="profile-pic-input"
-                    name="profile-pic"
+                    id="profilepic-input"
+                    name="profilepic"
                     placeholder="URL"
                     minlength="2"
-                    maxlength="40"
+                    maxlength="200"
                     required
                   />
-                  <span class="form__input-error" id="profile-pic-input-error"></span> 
+                  <span class="form__input-error" id="profilepic-input-error"></span> 
                 <button type="submit" class="form__submit">Save</button>
                 </fieldset>
               </form>
@@ -122,6 +122,7 @@
             <div class="modal__container modal__container-delete">
               <form class="form delete-form" name="deleteForm" novalidate>
                 <h4 class="form__header">Are You Sure?</h4>
+                <input class="form__input form__input-hidden" name="cardId" type="text">
                 <button type="submit" class="form__submit">Yes</button>
               </form>
               <button class="button button_type_close"></button>
