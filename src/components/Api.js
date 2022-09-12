@@ -4,20 +4,25 @@ export class Api {
         this.headers = promiseInformation.headers;
     }
 
+    _checkResponse(res) {
+        if (res.ok) {
+            return res.json();
+        }
+        return Promise.reject(`Error ${res.status}`);
+    }
+
     getUserData() {
        return fetch(`${this.url}users/me`, {
             headers: this.headers
         })
-        .then(res => res.ok ? res.json() : Promise.reject(`Error: ${res.status}`))
-        .catch(err => console.log(err))
+        .then(this._checkResponse)
     }
 
     getInitialCards() {
         return fetch(`${this.url}cards`, {
             headers: this.headers
         })
-        .then(res => res.ok ? res.json() : Promise.reject(`Error: ${res.status}`))
-        .catch(err => console.log(err))
+        .then(this._checkResponse)
     }
 
     submitUserEdit(data) {
@@ -29,8 +34,7 @@ export class Api {
                 about: data.about
             })
         })
-        .then(res => res.ok ? res.json() : Promise.reject(`Error: ${res.status}`))
-        .catch(err => console.log(err))
+        .then(this._checkResponse)
     }
 
     postNewCard(data) {
@@ -42,8 +46,7 @@ export class Api {
                 link: data.link
             })
         })
-        .then(res => res.ok ? res.json() : Promise.reject(`Error: ${res.status}`))
-        .catch(err => console.log(err))
+        .then(this._checkResponse)
     }
 
     addCardLike(id) {
@@ -51,8 +54,7 @@ export class Api {
             method: "PUT",
             headers: this.headers
         })
-        .then(res => res.ok ? res.json() : Promise.reject(`Error: ${res.status}`))
-        .catch(err => console.log(err))
+        .then(this._checkResponse)
     }
 
     removeCardLike(id) {
@@ -60,8 +62,7 @@ export class Api {
             method: "DELETE",
             headers: this.headers
         })
-        .then(res => res.ok ? res.json() : Promise.reject(`Error: ${res.status}`))
-        .catch(err => console.log(err))
+        .then(this._checkResponse)
     }
 
     deleteCard(id) {
@@ -69,8 +70,7 @@ export class Api {
             method: "DELETE",
             headers: this.headers
         })
-        .then(res => res.ok ? res.json() : Promise.reject(`Error: ${res.status}`))
-        .catch(err => console.log(err))
+        .then(this._checkResponse)
     }
 
     updateProfilePicture(url) {
@@ -81,7 +81,6 @@ export class Api {
                 avatar: url
             })
         })
-        .then(res => res.ok ? res.json() : Promise.reject(`Error: ${res.status}`))
-        .catch(err => console.log(err))
+        .then(this._checkResponse)
     }
 }

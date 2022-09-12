@@ -43,10 +43,6 @@ const createCard = (cardObject) => {
   return card.generateCard();
 };
 
-const changeProfileImage = (img) => {
-  profileImage.src = img;
-};
-
 const userInfo = new UserInfo(selectors);
 
 const api = new Api(promiseInformation);
@@ -58,7 +54,7 @@ function updateUserData() {
         userName: res.name,
         userJob: res.about,
       });
-      changeProfileImage(res.avatar);
+      userInfo.setUserImage({userImage: res.avatar});
       profile.setAttribute("id", res._id);
     });
   }, 1000);
@@ -141,6 +137,7 @@ profilePicFormValidator.enableValidation();
 
 const profilePicForm = new PopupWithForm(selectors.profilePicPopup, (data) => {
   api.updateProfilePicture(data.profilepic);
+  updateUserData();
   profilePicForm.close();
 });
 

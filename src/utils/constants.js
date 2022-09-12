@@ -47,7 +47,8 @@ const selectors = {
   profilePicForm: ".profile-pic-form",
   cardTemplate: "#card",
   userNameSelector: ".profile__name",
-  userJobSelector: ".profile__desc"
+  userJobSelector: ".profile__desc",
+  userImageSelector: ".profile__image"
 }
 
 const promiseInformation = {

@@ -39,6 +39,11 @@
   position: absolute;
   left: 47px;
   top: 47px;
+  opacity: 0;
+}
+
+.profile__image-wrapper:hover .button_type_edit-alt {
+  opacity: 0.6;
 }
 
 .button_type_close {
