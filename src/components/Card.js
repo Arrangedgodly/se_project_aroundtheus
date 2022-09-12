@@ -52,10 +52,10 @@ export class Card {
   updateLikes(res) {
     this.likes = res.likes;
     this._cardLikesCount.textContent = `${this.likes.length}`;
+    this._cardLikeButton.classList.toggle("button_type_like_filled");
   }
 
   _handleLikeIcon = () => {
-    this._cardLikeButton.classList.toggle("button_type_like_filled");
     this._isLiked = !this._isLiked;
     if (this._isLiked) {
       this._handleCardLike(this._id);

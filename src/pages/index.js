@@ -27,10 +27,14 @@ const createCard = (cardObject) => {
         imagePopup.open(imgData);
       },
       handleCardLike: (id) => {
-        api.addCardLike(id).then((res) => card.updateLikes(res));
+        api.addCardLike(id)
+          .then((res) => card.updateLikes(res))
+          .catch((err) => console.log(err));
       },
       handleCardUnlike: (id) => {
-        api.removeCardLike(id).then((res) => card.updateLikes(res));
+        api.removeCardLike(id)
+          .then((res) => card.updateLikes(res))
+          .catch((err) => console.log(err));
       },
       handleTrashPopup: (id) => {
         fillDeletePopup(id);
@@ -57,34 +61,25 @@ function updateUserData(res) {
   }
 }
 
-let cards = "";
 let cardSection = null;
-
-function setCards(data) {
-  cards = data;
-}
 
 Promise.all([api.getInitialCards(), api.getUserData()])
   .then(([cardData, userData]) => {
     updateUserData(userData);
-    setCards(cardData);
+    cardSection = new Section(
+      {
+        items: cardData,
+        renderer: (data) => {
+          const cardEl = createCard(data);
+          cardSection.addItem(cardEl);
+        },
+      },
+      ".cards"
+    );
+  
+  cardSection.renderItems();
   })
   .catch((err) => console.log(err));
-
-setTimeout(() => {
-  cardSection = new Section(
-    {
-      items: cards,
-      renderer: (data) => {
-        const cardEl = createCard(data);
-        cardSection.addItem(cardEl);
-      },
-    },
-    ".cards"
-  );
-
-cardSection.renderItems();
-  }, 1000);
 
 function fillProfileForm() {
   const { userName, userJob } = userInfo.getUserInfo();
@@ -95,12 +90,16 @@ function fillProfileForm() {
 
 const addForm = new PopupWithForm(selectors.cardPopup, (data) => {
   const newCard = { name: data.place, link: data.link };
-  api.postNewCard(newCard).then(res => {
+  api.postNewCard(newCard)
+    .then(res => {
     const cardElement = createCard(res);
     cardSection.addNewItem(cardElement);
-  });
-  addForm.close();
-  setTimeout(() => {addForm.renderLoading(false)}, 500);
+  })
+    .catch((err) => console.log(err))
+    .finally(() => {
+      addForm.close();
+      addForm.renderLoading(false);
+    })
 });
 
 addForm.setEventListeners();
@@ -115,10 +114,15 @@ addFormValidator.enableValidation();
 
 const profileForm = new PopupWithForm(selectors.profilePopup, (data) => {
   const newUser = { name: data.profile, about: data.desc };
-  api.submitUserEdit(newUser);
-  userInfo.setUserInfo({userName: data.profile, userJob: data.desc})
-  profileForm.close();
-  setTimeout(() => {profileForm.renderLoading(false)}, 500);
+  api.submitUserEdit(newUser)
+    .then(res => {
+      userInfo.setUserInfo({userName: res.name, userJob: res.about});
+    })
+    .catch((err) => console.log(err))
+    .finally(() => {
+      profileForm.close();
+      profileForm.renderLoading(false);
+    })
 });
 
 profileForm.setEventListeners();
@@ -127,9 +131,11 @@ const deletePopup = new PopupWithForm(selectors.deletePopup, (data) => {
   const card = document.getElementById(data.cardId);
   api.deleteCard(data.cardId).then(() => {
     card.remove();
-  });
-  deletePopup.close();
-  setTimeout(() => {deletePopup.renderLoading(false)}, 500);
+  }).catch((err) => console.log(err))
+    .finally(() => {
+      deletePopup.close();
+      deletePopup.renderLoading(false);
+    })
 });
 
 function fillDeletePopup(data) {
@@ -158,9 +164,14 @@ profilePicFormValidator.enableValidation();
 
 const profilePicForm = new PopupWithForm(selectors.profilePicPopup, (data) => {
   api.updateProfilePicture(data.profilepic)
-    .then(res => userInfo.setUserImage({userImage: res.avatar}));
-  profilePicForm.close();
-  setTimeout(() => {profilePicForm.renderLoading(false)}, 500);
+    .then(res => {
+      userInfo.setUserImage({userImage: res.avatar})
+    })
+    .catch((err) => console.log(err))
+    .finally(() => {
+      profilePicForm.close();
+      profilePicForm.renderLoading(false);
+    })
 });
 
 profilePicForm.setEventListeners();
