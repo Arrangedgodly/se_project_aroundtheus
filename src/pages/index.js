@@ -177,6 +177,6 @@ const profilePicForm = new PopupWithForm(selectors.profilePicPopup, (data) => {
 profilePicForm.setEventListeners();
 
 editProfilePicButton.addEventListener("click", () => {
-  profilePicFormValidator.toggleButtonState();
+  profilePicFormValidator.resetValidation();
   profilePicForm.open();
 });
