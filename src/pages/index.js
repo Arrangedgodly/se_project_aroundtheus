@@ -11,7 +11,6 @@ import {
   editProfileButton,
   editProfilePicButton,
   addCardButton,
-  profileImage,
   profileNameInput,
   profileDescInput,
   config,
@@ -28,10 +27,12 @@ const createCard = (cardObject) => {
         imagePopup.open(imgData);
       },
       handleCardLike: (id) => {
-        api.addCardLike(id);
+        api.addCardLike(id)
+          .then(res => card.updateLikes(res))
       },
       handleCardUnlike: (id) => {
-        api.removeCardLike(id);
+        api.removeCardLike(id)
+          .then(res => card.updateLikes(res))
       },
       handleTrashPopup: (id) => {
         fillDeletePopup(id);
@@ -126,7 +127,8 @@ const editFormValidator = new FormValidator(config, selectors.profileForm);
 editFormValidator.enableValidation();
 
 const deletePopup = new PopupWithForm(selectors.deletePopup, (data) => {
-  api.deleteCard(data.cardId);
+  api.deleteCard(data.cardId)
+    .then(res => console.log(res))
   deletePopup.close();
 });
 

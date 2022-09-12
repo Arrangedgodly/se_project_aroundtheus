@@ -42,14 +42,15 @@ export class Card {
     cardTitle.textContent = this._title;
     cardImage.src = this._link;
     cardImage.alt = `A Scenic Photo of ${this._title}`;
-    this._updateLikeCount();
+    this._cardLikesCount.textContent = this.likes.length;
 
     this._setEventListeners();
 
     return this._element;
   };
 
-  _updateLikeCount = () => {
+  updateLikes(res) {
+    this.likes = res.likes;
     this._cardLikesCount.textContent = `${this.likes.length}`;
   }
 
@@ -58,10 +59,8 @@ export class Card {
     this._isLiked = !this._isLiked;
     if (this._isLiked) {
       this._handleCardLike(this._id);
-      this._updateLikeCount();
     } else {
       this._handleCardUnlike(this._id);
-      this._updateLikeCount();
     }
   };
 
@@ -84,9 +83,14 @@ export class Card {
     }
   }
 
+  handleTrashIcon = () => {
+    this._element.remove();
+    this._element = null;
+  }
+
   _setEventListeners() {
     this._cardTrashButton.addEventListener("click", () => {
-      this._handleTrashPopup(this._id)
+      this._handleTrashPopup(this._id);
     });
 
     this._cardImageButton.addEventListener("click", () =>
