@@ -58,6 +58,7 @@ function updateUserData(res) {
 }
 
 let cards = "";
+let cardSection = null;
 
 function setCards(data) {
   cards = data;
@@ -71,7 +72,7 @@ Promise.all([api.getInitialCards(), api.getUserData()])
   .catch((err) => console.log(err));
 
 setTimeout(() => {
-  const cardSection = new Section(
+  cardSection = new Section(
     {
       items: cards,
       renderer: (data) => {
@@ -83,6 +84,7 @@ setTimeout(() => {
   );
 
 cardSection.renderItems();
+  }, 1000);
 
 function fillProfileForm() {
   const { userName, userJob } = userInfo.getUserInfo();
@@ -98,6 +100,7 @@ const addForm = new PopupWithForm(selectors.cardPopup, (data) => {
     cardSection.addNewItem(cardElement);
   });
   addForm.close();
+  setTimeout(() => {addForm.renderLoading(false)}, 500);
 });
 
 addForm.setEventListeners();
@@ -113,9 +116,12 @@ addFormValidator.enableValidation();
 const profileForm = new PopupWithForm(selectors.profilePopup, (data) => {
   const newUser = { name: data.profile, about: data.desc };
   api.submitUserEdit(newUser);
-  updateUserData();
+  userInfo.setUserInfo({userName: data.profile, userJob: data.desc})
   profileForm.close();
+  setTimeout(() => {profileForm.renderLoading(false)}, 500);
 });
+
+profileForm.setEventListeners();
 
 const deletePopup = new PopupWithForm(selectors.deletePopup, (data) => {
   const card = document.getElementById(data.cardId);
@@ -123,7 +129,7 @@ const deletePopup = new PopupWithForm(selectors.deletePopup, (data) => {
     card.remove();
   });
   deletePopup.close();
-  deletePopup.renderLoading(false);
+  setTimeout(() => {deletePopup.renderLoading(false)}, 500);
 });
 
 function fillDeletePopup(data) {
@@ -135,8 +141,6 @@ deletePopup.setEventListeners();
 
 const imagePopup = new PopupWithImage(selectors.imagePopup);
 imagePopup.setEventListeners();
-
-profileForm.setEventListeners();
 
 editProfileButton.addEventListener("click", () => {
   fillProfileForm();
@@ -153,9 +157,10 @@ const profilePicFormValidator = new FormValidator(
 profilePicFormValidator.enableValidation();
 
 const profilePicForm = new PopupWithForm(selectors.profilePicPopup, (data) => {
-  api.updateProfilePicture(data.profilepic);
-  updateUserData();
+  api.updateProfilePicture(data.profilepic)
+    .then(res => userInfo.setUserImage({userImage: res.avatar}));
   profilePicForm.close();
+  setTimeout(() => {profilePicForm.renderLoading(false)}, 500);
 });
 
 profilePicForm.setEventListeners();
@@ -164,4 +169,3 @@ editProfilePicButton.addEventListener("click", () => {
   profilePicFormValidator.toggleButtonState();
   profilePicForm.open();
 });
-}, 1000);
