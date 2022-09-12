@@ -1,16 +1,15 @@
 export class Card {
   constructor({data, handleCardPopup, handleCardLike, handleCardUnlike, handleTrashPopup}, cardSelector, userId) {
     this._data = data;
-    console.log(this._data);
     this._title = data.name;
     this._link = data.link;
-    this._likes = data.likes;
+    this.likes = data.likes;
     this._id = data._id;
     this._userId = userId;
     this._ownerid = data.owner._id;
     this._isLiked = false;
 
-    if (this._likes.includes(this._userId)) {
+    if (this.likes.includes(this._userId)) {
       this._isLiked = true;
     } else {
       this._isLiked = false;
@@ -51,7 +50,7 @@ export class Card {
   };
 
   _updateLikeCount = () => {
-    this._cardLikesCount.textContent = `${this._likes.length}`;
+    this._cardLikesCount.textContent = `${this.likes.length}`;
   }
 
   _handleLikeIcon = () => {
@@ -67,8 +66,8 @@ export class Card {
   };
 
   _checkLikeIcon = () => {
-    for (let i = 0; i < this._likes.length; i++) {
-      if (this._likes[i]._id === this._userId) {
+    for (let i = 0; i < this.likes.length; i++) {
+      if (this.likes[i]._id === this._userId) {
         this._isLiked = true;
         this._cardLikeButton.classList.toggle("button_type_like_filled");
         return;
@@ -76,7 +75,7 @@ export class Card {
     }
   }
 
-  checkCardOwnerId = () => {
+  _checkCardOwnerId = () => {
     if (this._userId !== this._ownerid) {
       this._cardTrashButton.remove();
       this._cardTrashButton = null;
@@ -96,7 +95,7 @@ export class Card {
 
     this._cardLikeButton.addEventListener("click", this._handleLikeIcon);
 
-    this.checkCardOwnerId();
+    this._checkCardOwnerId();
     this._checkLikeIcon();
   }
 }

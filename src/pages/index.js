@@ -28,14 +28,10 @@ const createCard = (cardObject) => {
         imagePopup.open(imgData);
       },
       handleCardLike: (id) => {
-        setTimeout(() => {
-          api.addCardLike(id);
-        }, 500);
+        api.addCardLike(id);
       },
       handleCardUnlike: (id) => {
-        setTimeout(() => {
-          api.removeCardLike(id);
-        }, 500);
+        api.removeCardLike(id);
       },
       handleTrashPopup: (id) => {
         fillDeletePopup(id);
@@ -102,7 +98,7 @@ imagePopup.setEventListeners();
 
 const addForm = new PopupWithForm(selectors.cardPopup, (data) => {
   const newCard = { name: data.place, link: data.link };
-  api.postNewCard(newCard).then((res) => console.log(res));
+  api.postNewCard(newCard);
   addForm.close();
 });
 
@@ -140,6 +136,9 @@ const deletePopup = new PopupWithForm(selectors.deletePopup, (data) => {
 
 deletePopup.setEventListeners();
 
+const profilePicFormValidator = new FormValidator(config, selectors.profilePicForm);
+profilePicFormValidator.enableValidation();
+
 const profilePicForm = new PopupWithForm(selectors.profilePicPopup, (data) => {
   api.updateProfilePicture(data.profilepic);
   profilePicForm.close();
@@ -148,5 +147,6 @@ const profilePicForm = new PopupWithForm(selectors.profilePicPopup, (data) => {
 profilePicForm.setEventListeners();
 
 editProfilePicButton.addEventListener("click", () => {
+  profilePicFormValidator.toggleButtonState();
   profilePicForm.open();
 });

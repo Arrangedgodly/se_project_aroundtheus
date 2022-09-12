@@ -44,6 +44,7 @@ const selectors = {
   deletePopup: ".delete-modal",
   cardForm: ".card-form",
   profileForm: ".profile-form",
+  profilePicForm: ".profile-pic-form",
   cardTemplate: "#card",
   userNameSelector: ".profile__name",
   userJobSelector: ".profile__desc"
