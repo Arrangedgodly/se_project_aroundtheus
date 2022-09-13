@@ -27,12 +27,14 @@ const createCard = (cardObject) => {
         imagePopup.open(imgData);
       },
       handleCardLike: (id) => {
-        api.addCardLike(id)
+        api
+          .addCardLike(id)
           .then((res) => card.updateLikes(res))
           .catch((err) => console.log(err));
       },
       handleCardUnlike: (id) => {
-        api.removeCardLike(id)
+        api
+          .removeCardLike(id)
           .then((res) => card.updateLikes(res))
           .catch((err) => console.log(err));
       },
@@ -76,8 +78,8 @@ Promise.all([api.getInitialCards(), api.getUserData()])
       },
       ".cards"
     );
-  
-  cardSection.renderItems();
+
+    cardSection.renderItems();
   })
   .catch((err) => console.log(err));
 
@@ -90,16 +92,17 @@ function fillProfileForm() {
 
 const addForm = new PopupWithForm(selectors.cardPopup, (data) => {
   const newCard = { name: data.place, link: data.link };
-  api.postNewCard(newCard)
-    .then(res => {
-    const cardElement = createCard(res);
-    cardSection.addNewItem(cardElement);
-  })
+  api
+    .postNewCard(newCard)
+    .then((res) => {
+      const cardElement = createCard(res);
+      cardSection.addNewItem(cardElement);
+      addForm.close();
+    })
     .catch((err) => console.log(err))
     .finally(() => {
-      addForm.close();
       addForm.renderLoading(false);
-    })
+    });
 });
 
 addForm.setEventListeners();
@@ -114,15 +117,16 @@ addFormValidator.enableValidation();
 
 const profileForm = new PopupWithForm(selectors.profilePopup, (data) => {
   const newUser = { name: data.profile, about: data.desc };
-  api.submitUserEdit(newUser)
-    .then(res => {
-      userInfo.setUserInfo({userName: res.name, userJob: res.about});
+  api
+    .submitUserEdit(newUser)
+    .then((res) => {
+      userInfo.setUserInfo({ userName: res.name, userJob: res.about });
+      profileForm.close();
     })
     .catch((err) => console.log(err))
     .finally(() => {
-      profileForm.close();
       profileForm.renderLoading(false);
-    })
+    });
 });
 
 profileForm.setEventListeners();
@@ -138,13 +142,16 @@ editProfileButton.addEventListener("click", () => {
 
 const deletePopup = new PopupWithForm(selectors.deletePopup, (data) => {
   const card = document.getElementById(data.cardId);
-  api.deleteCard(data.cardId).then(() => {
-    card.remove();
-  }).catch((err) => console.log(err))
-    .finally(() => {
+  api
+    .deleteCard(data.cardId)
+    .then(() => {
+      card.remove();
       deletePopup.close();
-      deletePopup.renderLoading(false);
     })
+    .catch((err) => console.log(err))
+    .finally(() => {
+      deletePopup.renderLoading(false);
+    });
 });
 
 function fillDeletePopup(data) {
@@ -164,15 +171,16 @@ const profilePicFormValidator = new FormValidator(
 profilePicFormValidator.enableValidation();
 
 const profilePicForm = new PopupWithForm(selectors.profilePicPopup, (data) => {
-  api.updateProfilePicture(data.profilepic)
-    .then(res => {
-      userInfo.setUserImage({userImage: res.avatar})
+  api
+    .updateProfilePicture(data.profilepic)
+    .then((res) => {
+      userInfo.setUserImage({ userImage: res.avatar });
+      profilePicForm.close();
     })
     .catch((err) => console.log(err))
     .finally(() => {
-      profilePicForm.close();
       profilePicForm.renderLoading(false);
-    })
+    });
 });
 
 profilePicForm.setEventListeners();
