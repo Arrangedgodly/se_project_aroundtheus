@@ -105,7 +105,7 @@ const addForm = new PopupWithForm(selectors.cardPopup, (data) => {
 addForm.setEventListeners();
 
 addCardButton.addEventListener("click", () => {
-  addFormValidator.toggleButtonState();
+  addFormValidator.resetValidation();
   addForm.open();
 });
 
@@ -127,6 +127,15 @@ const profileForm = new PopupWithForm(selectors.profilePopup, (data) => {
 
 profileForm.setEventListeners();
 
+const editFormValidator = new FormValidator(config, selectors.profileForm);
+editFormValidator.enableValidation();
+
+editProfileButton.addEventListener("click", () => {
+  fillProfileForm();
+  editFormValidator.resetValidation();
+  profileForm.open();
+});
+
 const deletePopup = new PopupWithForm(selectors.deletePopup, (data) => {
   const card = document.getElementById(data.cardId);
   api.deleteCard(data.cardId).then(() => {
@@ -147,14 +156,6 @@ deletePopup.setEventListeners();
 
 const imagePopup = new PopupWithImage(selectors.imagePopup);
 imagePopup.setEventListeners();
-
-editProfileButton.addEventListener("click", () => {
-  fillProfileForm();
-  profileForm.open();
-});
-
-const editFormValidator = new FormValidator(config, selectors.profileForm);
-editFormValidator.enableValidation();
 
 const profilePicFormValidator = new FormValidator(
   config,
